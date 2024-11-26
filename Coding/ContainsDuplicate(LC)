@@ -1,0 +1,41 @@
+LEETCODE: 217. Contains Duplicate (HASHMAP)
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+      unordered_map<int,int> map;
+      for(int num:nums)
+        {
+            if(map.find(num)!=map.end())
+            {
+                return true;
+            }
+            map[num]=true;
+        }
+    return false;
+      
+    }
+};
+
+// xor is not suitable for finding duplicates 
+Why XOR doesn't work for duplicate detection in general:
+XOR works with the following properties:
+
+a ^ a = 0 (XORing a number with itself results in 0)
+a ^ 0 = a (XORing a number with 0 results in the number itself)
+
+// ALTER METHOD (using SET)
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> seen; // Use a set to track unique elements
+        for (int num : nums) {
+            if (seen.find(num) != seen.end()) {
+                return true; // Return true if the number is already in the set
+            }
+            seen.insert(num); // Add the current number to the set
+        }
+        return false; // If no duplicates were found
+    }
+};

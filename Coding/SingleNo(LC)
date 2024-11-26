@@ -1,0 +1,33 @@
+//LEETCODE 136-SINGLE NUMBER (HASHMAP)
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+       unordered_map<int,int> map;
+       for(int i=0;i<nums.size();i++)
+       {
+           map[nums[i]]++;
+       }
+       for(int i=0;i<nums.size();i++)
+       {
+            if(map[nums[i]]==1)
+            {
+                return nums[i];
+            }
+       }
+      return {};  // O(n^2)
+    }
+};
+
+
+// alter meth0d with O(N)
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;  // XOR each number with the result
+        }
+        return result;  // The result will be the number that appears once
+    }
+};

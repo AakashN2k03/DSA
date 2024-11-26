@@ -1,0 +1,22 @@
+LEETCODE: 219. Contains Duplicate II (HASHMAP)
+
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int, int> index_map; // To store the last seen index of each element
+        
+        for (int i = 0; i < nums.size(); ++i) {
+            int num = nums[i];
+            
+            // Check if the number is already in the map and if the index difference is <= k
+            if (index_map.find(num) != index_map.end() && i - index_map[num] <= k) {
+                return true;  // Duplicate found within the range
+            }
+            
+            // Update the map with the current index of the number
+            index_map[num] = i;
+        }
+        
+        return false; // No duplicates within the range found
+    }
+};

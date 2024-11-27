@@ -1,0 +1,22 @@
+LEETCODE:  387. First Unique Character in a String (HASHMAP)
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        unordered_map<char,int> map;
+        int len=s.length();
+        int i;
+        for(i=0;i<len;i++)
+        {
+            map[s[i]]++;
+        }
+        for(i=0;i<len;i++)
+        {
+            if(map[s[i]]==1)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+};

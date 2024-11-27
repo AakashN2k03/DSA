@@ -36,7 +36,15 @@ class Solution {
 public:
     char findTheDifference(string s, string t) {
       
-        char res=0;
+        char res=0; // or we can use     char res='\0';
+
+       // this is because,initializing a char variable with 0 is not an error in C++. 
+        This is because char is an integer type in C++ and it can hold any integer value in the range of its type (usually from -128 to 127 or 0 to 255, 
+       depending on whether it's signed or unsigned).
+
+        In the case of the expression char res = 0;, you're simply setting the character variable res to the value 0, 
+        which corresponds to the null character ('\0'), also known as the ASCII null. 
+
         for(char s1:s)
         {
             res^=s1;

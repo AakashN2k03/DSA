@@ -1,0 +1,47 @@
+LEETCODE: 349. Intersection of Two Arrays (HASHMAP)
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int n,m,i;
+        n=nums1.size();
+        m=nums2.size();
+        set<int> ins;
+        unordered_map<int,int> map;
+        if(n>m)
+        {
+            for(i=0;i<m;i++)
+            {
+                map[nums2[i]]=1;
+            }
+            for(i=0;i<n;i++)
+            {
+                if(map[nums1[i]]==1)
+                {
+                    ins.insert(nums1[i]);
+                }
+            }
+            vector<int> vec(ins.begin(),ins.end());
+            return vec;
+        }
+        
+
+        else
+        {  
+            for(i=0;i<n;i++)
+            {
+                map[nums1[i]]=1;
+            }
+            for(i=0;i<m;i++)
+            {
+                if(map[nums2[i]]==1)
+                {
+                    ins.insert(nums2[i]);
+                }
+            }
+             vector<int> vec(ins.begin(),ins.end());
+            return vec;
+
+        }
+    }
+};

@@ -1,0 +1,23 @@
+LEETCODE :3. Longest Substring Without Repeating Characters(HASHMAP)
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int start=0,end=0,len=0;
+        unordered_map<char,int>map;
+        for(end=0;end<s.length();end++)
+        {
+            if(map.find(s[end])!=map.end() && map[s[end]]>=start)
+            {
+                start=map[s[end]]+1;
+            }
+            map[s[end]]=end;
+            len=max(len,end-start+1);
+        }
+        return len;
+    }
+};
+
+/* why to add +1 len=max(len,end-start+1); let's take a example 'abcde'
+consider we want bcd length..if we subtract end-start(from b index to d index) we get 2,so we use +1 to get accurate result
+which is 3*/

@@ -1,0 +1,31 @@
+LEETCODE:347. Top K Frequent Elements (HASHMAP)
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+           unordered_map<int, int> map;
+        
+        // Step 1: Count the frequency of each element in nums
+        for (int num : nums) {
+            map[num]++;
+        }
+        
+        // Step 2: Create a vector of pairs where each pair is (element, frequency)
+
+        vector<pair<int, int>> freq_map(map.begin(), map.end());
+        
+        // Step 3: Sort the pairs based on frequency in descending order
+
+        sort(freq_map.begin(), freq_map.end(), [](pair<int, int>& a, pair<int, int>& b) {
+            return a.second > b.second;  // Sort by frequency in descending order
+        });
+        
+        // Step 4: Collect the top k elements
+
+        vector<int> result;
+        for (int i = 0; i < k; i++) {
+            result.push_back(freq_map[i].first);
+        }
+        
+        return result;
+    }
+};

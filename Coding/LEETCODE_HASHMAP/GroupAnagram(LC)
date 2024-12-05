@@ -1,0 +1,24 @@
+LEETCODE:49. Group Anagrams (HASHMAP)
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        int n=strs.size();
+        unordered_map<string,vector<string>> map;
+        string temp;
+        for(int i=0;i<n;i++)
+        {   
+            temp=strs[i];
+            sort(strs[i].begin(),strs[i].end());
+            map[strs[i]].push_back(temp);
+            
+        }
+        vector<vector<string>> vec;
+        for(auto  x=map.begin();x!=map.end();x++)
+        {    vec.push_back(x->second);
+
+        }
+        return vec;
+        
+    }
+};

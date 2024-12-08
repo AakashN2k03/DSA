@@ -1,0 +1,37 @@
+LEETCODE:   1636. Sort Array by Increasing Frequency (HASHMAP)
+
+class Solution {
+public:
+    vector<int> frequencySort(vector<int>& nums) {
+        unordered_map<int, int> freqMap;
+        
+        // Count the frequency of each element
+        for (int num : nums) {
+            freqMap[num]++;
+        }
+        
+        // Sort the elements based on frequency and then value (for ties)
+
+        vector<pair<int, int>> freqVector(freqMap.begin(), freqMap.end());
+        sort(freqVector.begin(), freqVector.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+            if (a.second == b.second) {
+                return a.first > b.first;  // If frequencies are equal, sort by value (decreasing)
+            }
+            return a.second < b.second;  // Sort by frequency (increasing)
+        });
+        
+        // Rebuild the result array
+
+        vector<int> result;
+        for (auto& entry : freqVector) {
+            result.insert(result.end(), entry.second, entry.first);  // Insert each number based on its frequency
+        }
+        
+        return result;
+    }
+};
+      /*result.insert(result.end(), ...):
+      
+      insert is a method of the vector class in C++ that adds elements to the vector.
+      result.end() refers to the position right after the last element of the vector result. This means that the new elements will be inserted at the end of the result vector.
+      */

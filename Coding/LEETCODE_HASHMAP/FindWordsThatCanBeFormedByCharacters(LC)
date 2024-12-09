@@ -1,0 +1,47 @@
+LEETCODE:   1160. Find Words That Can Be Formed by Characters (HAHSMAP)
+
+class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        unordered_map<char,int>chars_map;
+        for(char ch:chars)
+        { 
+               chars_map[ch]++;
+        }
+         int tot_len=0;
+        for(string word:words)
+        {
+            unordered_map<char,int> word_map;
+            bool find_words=true;
+
+            for(char ch:word)
+            {
+                word_map[ch]++;
+                if(word_map[ch]>chars_map[ch])
+                {
+                    find_words=false;
+                    break;
+
+                }
+            }
+            if(find_words)
+            {
+                tot_len+=word.length();
+            }
+        }
+
+        return tot_len;
+    }
+};
+
+/* In line no 12,we can use (const string& word)
+
+----> By Value (string word):
+
+Memory Overhead: A new string object is created, and its content is copied, which could result in higher memory usage and slower performance for large strings.
+Modifiable: The function can change the content of the string, but this is often unnecessary and can lead to accidental modifications.
+
+----> By Reference (const string& word):
+
+No Memory Overhead: The function works with the original string without copying, making it more efficient.
+Non-Modifiable: It ensures that the string won't be changed within the function, which can help avoid bugs where the original string might unintentionally be modified.

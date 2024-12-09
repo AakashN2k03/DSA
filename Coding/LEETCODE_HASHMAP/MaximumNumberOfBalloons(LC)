@@ -1,0 +1,26 @@
+LEETOCDE :1189. Maximum Number of Balloons (HASHMAP)
+
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        
+        unordered_map<char,int> map;
+        for(char ch:text)
+        {
+               map[ch]++;
+        }
+        int b=map['b'];
+        int a=map['a'];
+        int l=map['l']/2;       /* we divide by 2 for repeated words (l,l,o,o) becoz for text="balon" expected 0 ,if we don;t divide we get ouput as 1(which is wrong)
+        int o=map['o']/2;
+        int n=map['n'];
+        return min({b,a,l,o,n});
+
+//{} -> initializer list
+
+/* if we don't use {},then we should use min(b, min(a, min(l, min(o, n)))) which is bit confusing.Hence we make it simpler in
+ single line min({b, a, l, o, n});
+*/
+        
+    
+};

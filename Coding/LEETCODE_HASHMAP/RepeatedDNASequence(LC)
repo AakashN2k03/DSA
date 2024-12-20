@@ -24,3 +24,10 @@ public:
         return result;
     }
 };
+
+//For example: why to use i<=s.length()-10 (less than or equal to)
+
+If s = "AAAAACCCCCAAAAACCCCC", s.length() = 20.
+The loop iterates from i = 0 to i = 10:
+At i = 10, s.substr(10, 10) extracts the substring starting at index 10 and ending at index 19.
+This avoids out-of-bounds errors while covering all valid substrings of length 10.

@@ -1,0 +1,28 @@
+LEETCODE: 1004. Max Consecutive Ones III (SLIDING WINDOW + TWO POINTER)
+
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        int l = 0, r = 0, maxlen = 0, zeros = 0;
+        int n = nums.size();
+
+        while (r < n) {
+            if (nums[r] == 0) {
+                zeros++;
+            }
+
+            while (zeros > k) { // Shrink the window if zeros exceed k
+                if (nums[l] == 0) {
+                    zeros--;
+                }
+                l++;
+            }
+
+            // Calculate the max length of the valid window
+            maxlen = max(maxlen, r - l + 1);
+            r++;
+        }
+
+        return maxlen;
+    }
+};

@@ -1,0 +1,63 @@
+CODE 360: Longest Substring with At Most K Distinct Characters (SLIDING WINDOW + TWO POINTER + HASHMAP)
+
+#include<unordered_map>
+#include<string>
+
+int kDistinctChars(int k, string &str)
+{
+    int l = 0, r = 0, maxlen = 0;
+    unordered_map<char, int> mpp;
+
+    while (r < str.length()) {
+        mpp[str[r]]++; // Add current character to the map
+
+        // Shrink the window if the number of distinct characters exceeds k
+        while (mpp.size() > k) {
+            mpp[str[l]]--;
+            if (mpp[str[l]] == 0) {
+                mpp.erase(str[l]); // Erase the character if its count is 0
+            }
+            l++;
+        }
+
+        // Update the maximum length of the valid window
+        maxlen = max(maxlen, r - l + 1);
+        r++; // Expand the window
+    }
+
+    return maxlen;
+}
+// use this code in coding ninjas.The problem is avaliable in leetcode too,but it's a premium problem
+
+
+// most optimal approach
+  (just use if in second while loop)
+
+#include<unordered_map>
+#include<string>
+
+int kDistinctChars(int k, string &str)
+{
+    int l = 0, r = 0, maxlen = 0;
+    unordered_map<char, int> mpp;
+
+    while (r < str.length()) {
+        mpp[str[r]]++; // Add current character to the map
+
+        // Shrink the window if the number of distinct characters exceeds k
+        if (mpp.size() > k) {
+            mpp[str[l]]--;
+            if (mpp[str[l]] == 0) {
+                mpp.erase(str[l]); // Erase the character if its count is 0
+            }
+            l++;
+        }
+
+        // Update the maximum length of the valid window
+        maxlen = max(maxlen, r - l + 1);
+        r++; // Expand the window
+    }
+
+    return maxlen;
+}
+// use this code in coding ninjas.The problem is avaliable in leetcode too,but it's a premium problem

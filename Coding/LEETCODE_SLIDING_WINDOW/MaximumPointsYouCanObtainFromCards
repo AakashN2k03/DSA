@@ -1,0 +1,29 @@
+LEETCODE :  1423. Maximum Points You Can Obtain from Cards (SLIDING_WINDOW)
+
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int lsum = 0, rsum = 0, maxsum = 0, rindex, n, i;
+        n = cardPoints.size();
+        rindex = n - 1;
+
+        // Calculate the sum of the first 'k' elements from the left
+        for (i = 0; i < k; i++) {
+            lsum += cardPoints[i];
+            maxsum = lsum;
+        }
+
+        // Move elements from the left side to the right side and update the max sum
+        for (i = k - 1; i >= 0; i--) {
+            lsum -= cardPoints[i];
+            rsum += cardPoints[rindex];
+            rindex--;  
+            maxsum = max(maxsum, lsum + rsum);
+        }
+
+        return maxsum;
+    }
+};
+// //Rules of the Problem
+// You are allowed to take exactly k cards.
+// The cards must be chosen from either the start or the end of the array.

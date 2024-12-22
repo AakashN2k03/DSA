@@ -1,0 +1,27 @@
+LEETCODE : 1358. Number of Substrings Containing All Three Characters (SLIDING WINDOW + HASHMAP)
+
+
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        unordered_map<char,int>mpp;
+        int l,r,maxlen;
+        l=r=maxlen=0;
+        while(r<s.length())
+        {
+            mpp[s[r]]++;
+            while(mpp.size()==3)
+            {
+                maxlen+=s.length()-r;
+                mpp[s[l]]--;
+                if(mpp[s[l]]==0)
+                {
+                mpp.erase(s[l]);
+                }
+                l++;
+            }
+            r++;
+        }
+        return maxlen;
+    }
+};

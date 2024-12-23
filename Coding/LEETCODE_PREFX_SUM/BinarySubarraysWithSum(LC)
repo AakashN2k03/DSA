@@ -1,0 +1,30 @@
+LEETCODE : 930. Binary Subarrays With Sum (PREFIXSUM)
+
+class Solution {
+public:
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        unordered_map<int,int> prefixmpp;
+        int count,sum;
+        count=sum=0;
+           prefixmpp[0]=1;
+        for(int num:nums)
+        {    sum+=num;
+         
+            if(prefixmpp.find(sum-goal)!=prefixmpp.end())
+            {  count+=prefixmpp[sum-goal];
+
+            }
+            prefixmpp[sum]++;
+        }
+        return count;
+    }
+};
+// it can be done using two pointer/sliding window too but prefixsum is bit easier
+//Why map[0] = 1 is Needed
+Base Case for Subarrays Starting at Index 0:
+
+If the current prefix sum itself equals the goal, we need to count this as a valid subarray.
+Example:
+nums = [2, 1, 3], goal = 2.
+At index 0, sum = 2. We need to count this subarray [2].
+Without map[0] = 1, this scenario would not be considered because sum - goal = 0, and map[0] would not exist.

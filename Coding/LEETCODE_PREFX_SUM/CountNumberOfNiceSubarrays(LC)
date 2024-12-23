@@ -1,0 +1,20 @@
+LEETCODE: 1248. Count Number of Nice Subarrays (PREFIX_SUM)
+class Solution {
+public:
+    int numberOfSubarrays(vector<int>& nums, int k) {
+      unordered_map<int,int> prefixmpp;
+        int count,sum;
+        count=sum=0;
+           prefixmpp[0]=1;
+        for(int num:nums)
+        {    sum+=(num%2==0?0:1);
+         
+            if(prefixmpp.find(sum-k)!=prefixmpp.end())
+            {  count+=prefixmpp[sum-k];
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+            prefixmpp[sum]++;
+        }
+        return count;
+    }
+};

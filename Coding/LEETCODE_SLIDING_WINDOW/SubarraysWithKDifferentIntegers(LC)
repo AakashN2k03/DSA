@@ -1,0 +1,36 @@
+LEETCODE : 992. Subarrays with K Different Integers (SLIDING WINDOW + HASHMAP)
+
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+        return goodsubarray(nums, k) - goodsubarray(nums, k - 1); // property used exactly_K_distinct=at_most_K_distinct−at_most_K-1_distinct
+    }
+
+private:
+    int goodsubarray(vector<int>& nums, int k) {
+        unordered_map<int, int> mpp;
+        int l = 0, r = 0, count = 0;
+
+        while (r < nums.size()) {
+            mpp[nums[r]]++;
+            
+            // If there are more than k distinct integers, shrink the window
+            while (mpp.size() > k) {
+                mpp[nums[l]]--;
+                if (mpp[nums[l]] == 0) {
+                    mpp.erase(nums[l]);
+                }
+                l++;
+            }
+
+            // Count subarrays with at most k distinct integers
+            count += r - l + 1;
+            r++;
+        }
+        return count;
+    }
+};

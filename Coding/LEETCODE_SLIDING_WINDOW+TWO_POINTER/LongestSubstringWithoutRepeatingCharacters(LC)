@@ -1,0 +1,21 @@
+LEETCODE : 3. Longest Substring Without Repeating Characters (SLIDING_WINDOW+HASHMAP+TWO_POINTER)
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int l = 0, r = 0, maxsum = 0;
+        unordered_map<char, int> mpp;
+        
+        while (r < s.length()) {
+            mpp[s[r]]++; // Increase the frequency of the character at index r
+            while (mpp[s[r]] > 1) { // If we have a duplicate character
+                mpp[s[l]]--; // Decrease the frequency of the character at index l
+                l++; // Move left pointer to the right
+            }
+            maxsum = max(maxsum, r - l + 1); // Calculate the max length of substring
+            r++; // Move right pointer to the next character
+        }
+        
+        return maxsum; // Return the length of the longest substring without repeating characters
+    }
+};

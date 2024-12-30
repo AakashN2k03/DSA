@@ -1,0 +1,22 @@
+LEETCODE : 209. Minimum Size Subarray Sum (SLIDING_WINDOW)
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int l,r,minlen,sum;
+        l=r=sum=0;
+        minlen=INT_MAX;
+        while(r<nums.size())
+        {   sum+=nums[r];
+            while(sum>=target)
+            {   minlen=min(minlen,r-l+1);
+                 sum-=nums[l];
+                 l++;
+            }     
+            r++;
+        }
+        
+        return (minlen == INT_MAX) ? 0 : minlen;
+
+    }
+};

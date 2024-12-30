@@ -1,0 +1,47 @@
+LEETCODE: 59. Spiral Matrix II
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> matrix(n,vector(n,0));
+         int num=1;
+     int left,right,bot,top,i;
+     left=0,top=0;
+     right=n-1;
+     bot=n-1;
+     while(left<=right && top<=bot)
+     {
+        for(i=left;i<=right;i++)
+        {
+            matrix[left][i]=num++;
+        }
+        top++;
+
+        for(i=top;i<=bot;i++)
+        {
+            matrix[i][right]=num++;
+        }
+        right--;
+
+        if(top<=bot)
+        {
+            for(i=right;i>=left;i--)
+            {
+                 matrix[bot][i]=num++;
+            }
+            bot--;
+        }
+        if(left<=right)
+        {
+            for(i=bot;i>=top;i--)
+            {
+                matrix[i][left]=num++;
+            }
+            left++;
+        }
+       
+     }
+      return matrix;
+        
+    }
+};

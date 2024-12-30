@@ -1,0 +1,48 @@
+LEETCODE: 54. Spiral Matrix
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+     vector<int> vec;
+     int left,right,bot,top,i;
+     left=0,top=0;
+     int n=matrix.size();
+     int m=matrix[0].size();
+     right=m-1;
+     bot=n-1;
+     while(left<=right && top<=bot)
+     {
+        for(i=left;i<=right;i++)
+        {
+            vec.push_back(matrix[top][i]);
+        }
+        top++;
+
+        for(i=top;i<=bot;i++)
+        {
+            vec.push_back(matrix[i][right]);
+        }
+        right--;
+
+        if(top<=bot)
+        {
+            for(i=right;i>=left;i--)
+            {
+                vec.push_back(matrix[bot][i]);
+            }
+            bot--;
+        }
+        if(left<=right)
+        {
+            for(i=bot;i>=top;i--)
+            {
+                vec.push_back(matrix[i][left]);
+            }
+            left++;
+        }
+       
+     }
+      return vec;
+
+    }
+};

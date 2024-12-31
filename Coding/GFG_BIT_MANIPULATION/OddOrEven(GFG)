@@ -1,4 +1,4 @@
-GFG: Odd or Even 
+GFG: Odd or Even (AND)
 class Solution {
   public:
     string oddEven(int n) {

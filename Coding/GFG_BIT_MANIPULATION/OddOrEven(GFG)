@@ -1,0 +1,15 @@
+GFG: Odd or Even 
+class Solution {
+  public:
+    string oddEven(int n) {
+       return (n & 1)==0 ? "even":"odd";
+    }
+};
+
+// In binary representation, the least significant bit (LSB) determines whether a number is odd or even:
+
+   //For an even number, the LSB is 0.
+   //For an odd number, the LSB is 1.
+
+// TO FIND ODD n & 1 == 1
+// TO FIND EVEN n & 1 == 0

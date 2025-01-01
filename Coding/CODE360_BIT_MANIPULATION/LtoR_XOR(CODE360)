@@ -1,0 +1,21 @@
+CODE 360:  L to R XOR (XOR)
+int xorUpTo(int n) {
+    if (n % 4 == 0) return n;
+    if (n % 4 == 1) return 1;
+    if (n % 4 == 2) return n + 1; // for every cycle these 4 conditions are repeated in xor
+    return 0;
+}
+
+int findXOR(int L, int R) {
+    return xorUpTo(R) ^ xorUpTo(L - 1);
+}
+
+// ALTERNATE METHOD
+int findXOR(int L, int R){
+    int result = 0;
+    for(int i = L; i <= R; i++){
+        result ^= i;
+    }
+    return result;
+}
+// but in this method due to constraint only 49/50 testcases passes

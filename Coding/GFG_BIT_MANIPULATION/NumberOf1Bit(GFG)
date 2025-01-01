@@ -1,0 +1,40 @@
+GFG: Number of 1 Bit  (AND used Brian Kernighan's algorithm)
+
+class Solution {
+  public:
+    int setBits(int n) {
+        // Write Your Code here
+        int count=0;
+        while(n!=0)
+        {
+            n=n&(n-1);
+            count++;
+        }
+        return count;
+    }
+};
+
+// count number of set bit 0
+
+#include <iostream>
+using namespace std;
+
+int countZeroBits(int n) {
+    int totalBits = 32;  // Assuming 32-bit integer
+    int count = 0;
+
+    // Count the number of 1 bits using Brian Kernighan's algorithm
+    while (n != 0) {
+        n = n & (n - 1);  // Remove the rightmost 1 bit
+        count++;
+    }
+
+    // The number of 0 bits is the total bits minus the number of 1 bits
+    return totalBits - count;
+}
+
+int main() {
+    int n = 12;  // Example: Binary of 12 is 1100
+    cout << "Number of 0 bits in " << n << " is: " << countZeroBits(n) << endl;  // Output: 30 (for 32-bit integer)
+    return 0;
+}

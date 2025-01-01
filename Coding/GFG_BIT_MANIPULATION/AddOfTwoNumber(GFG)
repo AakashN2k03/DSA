@@ -1,0 +1,40 @@
+GFG:  Addition of Two Number ( And ,XOR , Left Shift)
+class Solution{   
+public:
+    int addition(int A, int B){
+        // code here 
+        int sum,carry;
+        while(B!=0)
+        {
+            sum=A^B;
+            carry=(A&B)<<1;
+            A=sum;
+            B=carry;
+        }
+        return A;
+    }
+};
+
+// subtraction
+class Solution{
+public:
+    int subtraction(int A, int B) {
+        // Get two's complement of B
+        B = ~B + 1;
+        
+        // Add A and two's complement of B
+        while (B != 0) {
+            // Calculate sum without carry
+            int sum = A ^ B;
+            
+            // Calculate carry and shift it left by 1
+            int carry = (A & B) << 1;
+            
+            // Update A and B
+            A = sum;
+            B = carry;
+        }
+        
+        return A;  // A now contains the result of A - B
+    }
+};

@@ -1,0 +1,14 @@
+LEETCODE: 461. Hamming Distance (XOR and AND and Right shift)
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int res = 0;
+        int diff = x ^ y;  // XOR the two numbers to get positions where they differ
+        while (diff != 0) {
+            res += (diff & 1);  // Count the rightmost bit if it's 1
+            diff >>= 1;  // Right shift to move to the next bit
+        }
+        return res;
+    }
+};

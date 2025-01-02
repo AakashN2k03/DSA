@@ -1,0 +1,23 @@
+CODE 360:   Implement Lower Bound (BS)
+
+int lowerBound(vector<int> arr, int n, int x) {
+	// Write your code here
+	 int low,high,mid,ans;
+        low=0;
+        ans=n;
+        high=n-1;
+        while(low<=high)
+        {
+             mid=(low+high)/2;
+             if(arr[mid]>=x)
+             {
+                 ans=mid;
+                 high=mid-1;
+             }
+             else{
+                 low=mid+1;
+             }
+            
+        }
+        return ans;
+}

@@ -1,0 +1,23 @@
+CODE 360:    Search Insert Position (BS)
+int searchInsert(vector<int>& arr, int m)
+{
+	int low,high,mid;
+	low=0;
+	high=arr.size()-1;
+	while(low<=high)
+	{
+		mid=(low+high)/2;
+		if(arr[mid]==m)
+		{
+			return mid;
+		}
+		else if(arr[mid]<m)
+		{
+			low=mid+1;
+		}
+		else{
+			high=mid-1;
+		}
+	}
+	return low;
+}

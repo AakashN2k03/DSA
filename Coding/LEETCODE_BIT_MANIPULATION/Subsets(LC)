@@ -1,0 +1,24 @@
+  LEETCODE: 78. Subsets (AND and LEFT SHIFT)
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> powerset;
+        int num,i,subset,n;
+        n=nums.size();
+        subset=1<<n;
+        
+        for(num=0;num<subset;num++)
+        {  vector<int> tempsubset;
+            for(i=0;i<n;i++)
+            {
+                if(num &(1<<i))
+                {
+                    tempsubset.push_back(nums[i]);
+                }
+            }
+            powerset.push_back(tempsubset);
+        }
+        return powerset;
+    }
+};

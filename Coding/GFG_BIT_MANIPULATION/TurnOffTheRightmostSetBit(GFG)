@@ -1,0 +1,6 @@
+GFG: Turn off the rightmost set bit (OR) remove the rightmost set bit
+
+int n = 13;
+int res;
+res = n & (n - 1);
+return res; // Return the result after turning off the rightmost set bit

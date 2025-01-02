@@ -1,0 +1,15 @@
+GFG:  Set kth bit (LEFT SHIFT + OR)
+
+class Solution
+{
+public:
+    int setKthBit(int N, int K)
+    {
+        int result;
+        K=1<<K;
+        result=N| K;
+        
+        return result;
+    }
+    
+};

@@ -1,0 +1,18 @@
+LEETCODE: 2220. Minimum Bit Flips to Convert Number (XOR + AND)
+
+class Solution {
+public:
+    int minBitFlips(int start, int goal) {
+        int xorbit;
+        xorbit=start^goal;
+        int count=0;
+      
+            while(xorbit!=0)
+            {
+                xorbit=xorbit&(xorbit-1);
+                count++;
+            }
+        
+        return count;
+    }
+};

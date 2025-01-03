@@ -1,0 +1,39 @@
+CODE 360: First and Last Position of an Element In Sorted Array (BS)
+
+int firstoccur(vector<int>& arr, int n, int k) {
+    int low = 0, high = n - 1, mid, ans = -1;
+    while (low <= high) {
+        mid = (low + high) / 2;
+        if (arr[mid] == k) {
+            ans = mid;          // Update answer
+            high = mid - 1;     // Continue searching in the left half
+        } else if (arr[mid] > k) {
+            high = mid - 1;     // Search in the left half
+        } else {
+            low = mid + 1;      // Search in the right half
+        }
+    }
+    return ans;
+}
+
+int secondoccur(vector<int>& arr, int n, int k) {
+    int low = 0, high = n - 1, mid, ans = -1;
+    while (low <= high) {
+        mid = (low + high) / 2;
+        if (arr[mid] == k) {
+            ans = mid;          // Update answer
+            low = mid + 1;      // Continue searching in the right half
+        } else if (arr[mid] > k) {
+            high = mid - 1;     // Search in the left half
+        } else {
+            low = mid + 1;      // Search in the right half
+        }
+    }
+    return ans;
+}
+
+pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k) {
+    int first = firstoccur(arr, n, k);
+    int second = secondoccur(arr, n, k);
+    return make_pair(first, second);
+}

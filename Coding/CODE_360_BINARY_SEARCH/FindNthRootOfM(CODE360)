@@ -1,0 +1,35 @@
+CODE360: Find Nth Root Of M (BS)
+
+int mult(int mid, int n, int m) {
+    long long res = 1;
+    for (int i = 0; i < n; i++) {
+        res *= mid;
+        if (res > m) { // If the result exceeds m, stop early
+            return 2;
+        }
+    }
+    if (res == m) {
+        return 1; // mid^n equals m
+    }
+    return 0; // mid^n is less than m
+}
+
+
+int NthRoot(int n, int m) {
+    int low = 1, high = m, mid;
+    
+    while (low <= high) {
+        mid = (low + high) / 2;
+        int result = mult(mid, n, m);
+        
+        if (result == 1) {         //logic->    if(mult(mid,n)==m)
+            return mid; // Found the n-th root
+        } else if (result == 0) {   //logic->  else if(mult(mid,n)<m)
+            low = mid + 1; // Increase low to search higher values
+        } else {                    // logic -> else mult(mid,m)>m    i.e return ==2
+            high = mid - 1; // Decrease high to search lower values
+        }
+    }
+    
+    return -1; // No integer n-th root exists
+}

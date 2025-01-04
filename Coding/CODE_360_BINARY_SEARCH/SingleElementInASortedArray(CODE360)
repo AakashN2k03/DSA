@@ -1,0 +1,41 @@
+CODE 360:  Single Element in a Sorted Array (BS)
+
+int singleNonDuplicate(vector<int>& arr)
+{
+	int low,high,mid;
+	int n=arr.size();
+	if(n==1)
+	{
+		return arr[0];
+	}
+	// if(arr[0]!=arr[1]) return arr[0];
+	// if(arr[n-1]!=arr[n-2]) return arr[n-1]; // this is for more optimized that is for faster checking of single element present either in first or last index
+
+	low=0;
+	high=n-1;
+	
+	while(low<=high)
+	{
+		mid=(low+high)/2;
+
+		if(arr[mid]!=arr[mid+1] && arr[mid]!=arr[mid-1])
+		{
+			return arr[mid];
+		}
+		if( (mid%2==1 && (arr[mid]==arr[mid-1])) || (mid%2==0 &&  (arr[mid]==arr[mid+1])))
+		{
+			low=mid+1;
+		}
+		else{
+			high=mid-1;
+		}
+	}
+	return -1;
+}
+
+
+// eg   index 0 1 2 3 4 5 6
+         arr  1 1 2 2 3 4 4    mid=3
+                    m   here mid in odd position so checking the if condition 	if( (mid%2==1 && (arr[mid]==arr[mid-1])) || (mid%2==0 &&  (arr[mid]==arr[mid+1])))
+
+// we can also solve this problem in bitwise operation

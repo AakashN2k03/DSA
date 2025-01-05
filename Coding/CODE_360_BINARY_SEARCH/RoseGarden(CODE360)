@@ -1,0 +1,55 @@
+CODE360:  Rose Garden (BS)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int blossom(vector<int> arr,int mid,int k,int m,int n)
+{
+        int count=0;
+		int totalbouquet=0;
+		for(int i=0;i<n;i++)
+		{
+			if(arr[i]<=mid)
+			{
+				count++;
+			}
+			else{
+			
+				totalbouquet+=count/k;
+					count=0;
+			}
+		}  
+		totalbouquet+=count/k;
+		return totalbouquet>=m;
+}
+
+int roseGarden(vector<int> arr, int k, int m)
+{
+	int n,low,high,mid;
+	n=arr.size();
+
+	if(n<m*k) return -1;
+
+	int mini = INT_MAX, maxi = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        mini = min(mini, arr[i]);
+        maxi = max(maxi, arr[i]);
+    }
+	low=mini;
+	high=maxi;
+    
+	while(low<=high)
+	{
+		mid=(low+high)/2;
+		int result=blossom(arr,mid,k,m,n);
+		if(result)
+		{
+			high=mid-1;
+		}
+		else{
+			low=mid+1;
+		}
+	}
+	return low;
+
+}

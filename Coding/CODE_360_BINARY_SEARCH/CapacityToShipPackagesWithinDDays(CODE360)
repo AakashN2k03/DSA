@@ -1,0 +1,46 @@
+CODE 360: Capacity To Ship Packages Within D Days (BS)
+
+int leastdays(vector<int> &weights, int mid,int n)
+{    int capacity,days;
+    days=1,capacity=0;
+     for(int i=0;i<n;i++)
+     {   if(capacity+weights[i]>mid)
+            {
+                days++;
+                capacity=weights[i];
+            }
+            else{
+                capacity+=weights[i];
+            }   
+     }
+     return days;
+}
+
+int leastWeightCapacity(vector<int> &weights, int d)
+{
+    int low,high,mid,n,maxima,sum;
+    maxima=INT_MIN,sum=0;
+    n=weights.size();
+    for(int i=0;i<n;i++)
+    {
+        maxima=max(maxima,weights[i]);
+        sum+=weights[i];
+    }
+    low=maxima;
+    high=sum;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        int result= leastdays(weights,mid,n);
+
+        if(result<=d)
+        {
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+
+    }
+    return low;
+}

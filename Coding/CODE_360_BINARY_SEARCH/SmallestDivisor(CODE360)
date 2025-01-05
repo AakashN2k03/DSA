@@ -1,0 +1,46 @@
+CODE 360: Smallest divisor (BS)
+
+
+int divisor(vector<int>& arr, int mid,int n)
+{
+	  int res=0;
+   for(int i=0;i<n;i++)
+   {
+        res+=ceil(double(arr[i])/mid);
+   }
+   return res;
+
+}
+
+int smallestDivisor(vector<int>& arr, int limit)
+{ 
+	int n,low,high,ans,mid,minima,maxima;
+	minima=INT_MAX;
+	maxima=INT_MIN;
+	n=arr.size();
+	for(int i=0;i<n;i++)
+	{
+		minima=min(minima,arr[i]);
+		maxima=max(maxima,arr[i]);
+	}
+
+	low=minima;
+	ans=0;
+	high=maxima;
+
+	while(low<=high)
+	{
+		mid=(low+high)/2;
+		int result=divisor(arr,mid,n);
+
+		if(result<=limit)
+		{
+			ans=mid;
+			high=mid-1;
+		}
+		else{
+			low=mid+1;
+		}
+	}
+	return ans; // can use return low also
+}

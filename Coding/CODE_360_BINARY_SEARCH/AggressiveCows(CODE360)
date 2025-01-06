@@ -1,0 +1,42 @@
+CODE 360: Aggressive Cows (BS max(min))
+
+int placeCows(vector<int> &stalls,int mid, int cows,int n)
+{   int cow,currentcow;
+    cow=1;
+    currentcow=stalls[0];
+
+    for(int i=1;i<n;i++)
+    {
+         if((stalls[i]-currentcow)>=mid)
+         {
+             cow++;
+             currentcow=stalls[i];
+               if(cow>=cows) return true;
+         }
+    }
+    return false;
+}
+
+int aggressiveCows(vector<int> &stalls, int k)
+{   sort(stalls.begin(),stalls.end());
+    int low,high,mid,n;
+    int ans=-1;
+    n=stalls.size();
+    low=0,high=stalls[n-1]-stalls[0];
+
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(placeCows(stalls,mid,k, n))
+        {
+            ans=mid;
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+        }
+        
+    }
+    return ans; //can return high becoz in question it asked to return maximum possible minimum distance.
+
+}

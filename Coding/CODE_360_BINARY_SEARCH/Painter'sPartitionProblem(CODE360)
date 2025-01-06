@@ -1,0 +1,55 @@
+CODE 360: Painter's Partition Problem (BS min(max))  
+
+// same code and concept of Allocate Books
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int requiredPainter(vector<int> &boards, int mid,int n)
+{
+       int painter=1,boardcount=0;
+       for(int i=0;i<n;i++)
+       {  if(boardcount+boards[i]<=mid)
+          {
+              boardcount+=boards[i];
+          }
+          else{
+              painter++;
+              boardcount=boards[i];
+          }
+       }
+       return painter;
+}
+
+
+int findLargestMinDistance(vector<int> &boards, int k)
+{   
+    int n,low,high,mid,maxi,sum;
+    n=boards.size();
+    if(k>n)
+    {
+        return -1;
+    }
+         maxi=INT_MIN,sum=0;
+    for(int i=0;i<n;i++)
+    {
+        maxi=max(maxi,boards[i]);
+        sum+=boards[i];
+    }
+    low=maxi;
+    high=sum;
+
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+
+        if(requiredPainter(boards,mid,n)>k)
+        {
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+        }
+    }
+    return low;
+}

@@ -1,0 +1,51 @@
+CODE 360:  Allocate Books (BS min(max))
+
+int bookAllocation(vector<int>& arr, int mid,int n)
+{
+    int student=1,pagecount=0;
+    for(int i=0;i<n;i++)
+    {
+       if(pagecount+arr[i]<=mid)
+       {
+           
+           pagecount+=arr[i];
+       }
+       else{
+           student++;
+           pagecount=arr[i];
+       }
+    }
+    return student;
+}
+
+int findPages(vector<int>& arr, int n, int m) {
+    if(m>n) return -1;
+    int low,high,mid,maxi,sum;
+    maxi=INT_MIN;
+    sum=0;
+    for(int i=0;i<n;i++)
+    {
+        maxi=max(maxi,arr[i]);
+        sum+=arr[i];
+    }
+    low=maxi;
+    high=sum;
+
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+
+        if(bookAllocation(arr,mid,n)>m)
+        {
+            low=mid+1;
+        }
+        else{
+            high=mid-1; 
+        }
+
+    }
+    return low; // return low becoz it asked to return  maximum number of pages assigned to a student is minimum.
+
+
+
+}

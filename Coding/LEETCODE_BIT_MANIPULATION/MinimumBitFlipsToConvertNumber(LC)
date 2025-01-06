@@ -1,4 +1,5 @@
 LEETCODE: 2220. Minimum Bit Flips to Convert Number (XOR + AND)
+ // you can use Minimum Bit Flips to Convert Number solution to solve  461. Hamming Distance and vice versa
 
 class Solution {
 public:

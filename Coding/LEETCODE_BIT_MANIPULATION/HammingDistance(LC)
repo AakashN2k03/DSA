@@ -1,5 +1,7 @@
 LEETCODE: 461. Hamming Distance (XOR and AND and Right shift)
 
+ // YOU can use same hamming code for 2220. Minimum Bit Flips to Convert Number and vice versa
+
 class Solution {
 public:
     int hammingDistance(int x, int y) {

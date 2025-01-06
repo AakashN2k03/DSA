@@ -1,0 +1,52 @@
+CODE 360:  Largest Subarray Sum Minimized (BS min(max))
+
+//The below solution is sams as Allocate Book
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int splitSubarray(vector<int> a, int mid,int n)
+{
+    int subarray=1,subarraySum=0;
+    for(int i=0;i<n;i++)
+    {
+        if(subarraySum+a[i]<=mid)
+        {
+            subarraySum+=a[i];
+        }
+        else{
+            subarray++;
+            subarraySum=a[i];
+        }
+    }
+    return subarray;
+}
+
+int largestSubarraySumMinimized(vector<int> a, int k) {
+     int low,high,mid,n,sum,maxi;
+     n=a.size();
+     if(k>n) return -1;
+     maxi=INT_MIN,sum=0;
+     for(int i=0;i<n;i++)
+     {
+         maxi=max(maxi,a[i]);
+         sum+=a[i];
+     }
+     low=maxi;
+     high=sum;
+
+     while(low<=high)
+     {
+         mid=(low+high)/2;
+
+         if(splitSubarray(a,mid,n)>k)
+         {
+             low=mid+1;
+         }
+         else{
+             high=mid-1;
+         }
+     }
+     return low;
+
+}

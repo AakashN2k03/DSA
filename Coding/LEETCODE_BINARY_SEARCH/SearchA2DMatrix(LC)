@@ -1,4 +1,5 @@
 LEETCODE: 74. Search a 2D Matrix (BS 2D Array)
+ // The same code can be applicable for    -> 240. Search a 2D Matrix II
 class Solution {
 public:
    int findTarget(vector<int>& matrix,int n, int t)

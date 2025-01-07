@@ -1,0 +1,45 @@
+LEETCODE: 74. Search a 2D Matrix (BS 2D Array)
+class Solution {
+public:
+   int findTarget(vector<int>& matrix,int n, int t)
+   {
+       bool ans=false;
+       int low,high,mid;
+       low=0,high=n-1;
+       while(low<=high)
+       {  
+          mid=(low+high)/2;
+
+          if(matrix[mid]==t)
+          {
+            ans=true;
+            high=mid-1;
+          }
+          else if(matrix[mid]>t)
+          {
+            high=mid-1;
+          }
+          else{
+            low=mid+1;
+          }
+       }
+       return ans;
+   }
+  
+  
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int i,n;
+        n=matrix.size();//row
+        // matrix[i].size();column
+        for(i=0;i<n;i++)
+        {
+            bool result=findTarget(matrix[i],matrix[i].size(),target);
+            if(result)
+            {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+};

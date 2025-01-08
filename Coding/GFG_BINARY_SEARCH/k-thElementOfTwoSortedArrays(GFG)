@@ -1,0 +1,41 @@
+GFG:K-th Element of Two Sorted Arrays 
+
+// brute force approach // for optimized approach first see median of sorted array using bs and use that approach in this problem
+
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+  public:
+    int kthElement(vector<int>& arr1, vector<int>& arr2, int k) {
+        vector<int> arr3;
+       int i,j;
+        i=0,j=0;
+        int n=arr1.size();
+        int m=arr2.size();
+    while(i<n && j<m)
+    {
+        if(arr1[i]<arr2[j])
+        {
+            arr3.push_back(arr1[i++]);
+        }
+        else{
+            arr3.push_back(arr2[j++]);
+        }
+    }
+    while(i<n)
+    {
+        arr3.push_back(arr1[i++]);
+    }
+
+     while(j<m)
+    {
+        arr3.push_back(arr2[j++]);
+    }
+
+     return arr3[k-1];
+
+    }
+};
+
+
+ 

@@ -1,4 +1,4 @@
-GFG : Median in a row-wise sorted Matrix (BS 2D Array)
+GFG : Median in a row-wise sorted Matrix (BS 2D Array) // but used brute force 
 
 // for more optimized approach use BS,see striver BS playlist, first see median in 1D Array,then 2D
 // But the below code works with all testcases without TLE error

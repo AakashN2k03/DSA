@@ -1,4 +1,26 @@
 CODE 360: Find Peak Element (BS)
+// easier way 
+int findPeakElement(vector<int> &arr) {
+    int n = arr.size();
+    int low = 0, high = n - 1;
+
+    while (low <=high) {
+        int mid = (low+high) / 2;
+
+        // Compare mid with mid + 1 to decide the search direction
+        if (arr[mid] > arr[mid + 1]) {
+            // The peak is on the left side, including mid
+            high = mid-1;
+        } else {
+            // The peak is on the right side
+            low = mid + 1;
+        }
+    }
+
+    // low == high is the peak index
+    return low;
+}
+// other way 
 int findPeakElement(vector<int> &arr) {
     // Write your code here
     int low,mid,high,n;

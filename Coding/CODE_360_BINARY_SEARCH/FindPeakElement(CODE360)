@@ -1,5 +1,4 @@
 CODE 360: Find Peak Element (BS)
-
 int findPeakElement(vector<int> &arr) {
     // Write your code here
     int low,mid,high,n;

@@ -1,0 +1,36 @@
+GFG : Median in a row-wise sorted Matrix (BS 2D Array)
+
+// for more optimized approach use BS,see striver BS playlist, first see median in 1D Array,then 2D
+// But the below code works with all testcases without TLE error
+
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int median(vector<vector<int>> &mat) {
+        int n = mat.size();    // Number of rows
+        int m = mat[0].size(); // Number of columns
+
+        // Step 1: Flatten the 2D matrix into a 1D array
+        vector<int> flatArr;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                flatArr.push_back(mat[i][j]);
+            }
+        }
+
+        // Step 2: Sort the 1D array
+        sort(flatArr.begin(), flatArr.end());
+
+        // Step 3: Compute the median
+        int len = flatArr.size();
+        if (len % 2 == 1) {
+            // Odd number of elements
+            return flatArr[len / 2];
+        } else {
+            // Even number of elements
+            return (flatArr[len / 2] + flatArr[(len / 2) - 1]) / 2;
+        }
+    }
+};
+

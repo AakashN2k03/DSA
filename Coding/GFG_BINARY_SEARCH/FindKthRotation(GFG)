@@ -1,0 +1,19 @@
+GFG: Find Kth Rotation (Brute Force)
+
+// for more optimized way use BS,but below code passes TLE and All testcases
+
+class Solution {
+  public:
+    int findKRotation(vector<int> &arr) {
+        int min=INT_MAX,index=-1;
+        for(int i=0;i<arr.size();i++)
+        {
+             if(arr[i]<min)
+             {
+                 min=arr[i];
+                 index=i;
+             }
+        }
+        return index;
+    }
+};

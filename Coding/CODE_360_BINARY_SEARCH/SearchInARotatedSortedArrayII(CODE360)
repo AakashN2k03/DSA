@@ -14,7 +14,7 @@ bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
             return true;
         }
 
-        if(A[low]==A[mid]&& A[mid]==A[high]) // this conditioj=n is for duplicates in sorted rotated array
+        if(A[low]==A[mid]&& A[mid]==A[high]) // this condition is for duplicates in sorted rotated array
         {
             low=low+1;
             high=high-1;

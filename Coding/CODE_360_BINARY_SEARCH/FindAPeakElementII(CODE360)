@@ -1,0 +1,45 @@
+CODE 360:   Find A Peak Element II (BS 2D Array)
+  // In this problem we have comparing maximum element in column wise, you can also do it by comparing max element in row wise
+int maxelement(vector<vector<int>> &g,int n,int mid)
+{
+    int index=-1;
+    int maxi=-1;
+    for(int i=0;i<n;i++)
+    {    
+         if(g[i][mid]>maxi)
+         {
+             maxi=g[i][mid];
+             index=i;
+         }
+    }
+    return index;
+}
+
+vector<int> findPeakGrid(vector<vector<int>> &g){
+    int low,high,mid,n,m;
+    n=g.size();
+    m=g[0].size();
+    low=0;
+    high=m-1;
+    int left,right;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        int result=maxelement(g,n,mid);
+        left=mid-1 >= 0? g[result][mid-1]:-1;
+        right=mid+1 < m? g[result][mid+1]:-1;
+
+        if(g[result][mid]>left && g[result][mid]>right)
+        {
+            return {result,mid};
+        }
+        else if(g[result][mid]<left){
+             high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+
+    }
+        return{-1,-1};
+}

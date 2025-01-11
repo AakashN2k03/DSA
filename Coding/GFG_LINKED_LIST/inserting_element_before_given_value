@@ -1,0 +1,19 @@
+INSERTING ELEMENT BEFORE GIVEN VALUE
+
+if (head==null) 
+ {   return null;
+ }
+
+if(head->data==val) return new Node(val,head);
+
+Node *temp=head;
+while(temp->next)
+{    
+  if(temp->next->data==val)
+     {  Node * newnode= new Node(element,temp->next);
+        temp->next=newNode;
+       return head;
+      }
+temp=temp->next;
+}
+return head;

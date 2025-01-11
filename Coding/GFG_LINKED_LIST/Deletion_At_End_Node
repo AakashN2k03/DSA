@@ -1,0 +1,27 @@
+DELETION OF NODE AT END (SLL)
+
+       if(head==NULL || head->next==NULL) return  NULL;
+        Node* temp;
+        temp=head;
+        
+        while(temp->next->next)
+        {
+            
+            temp=temp->next;
+        }
+        
+        delete(temp->next);
+        temp->next=nullptr;
+
+// if you have time try this too ,(it may or may not work)
+        if(head==NULL || head->next==NULL) return  NULL;
+        Node* temp;
+        temp=head;
+        Node * prev;
+        while(temp)
+        {
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=nullptr;
+        delete(temp);

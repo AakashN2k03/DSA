@@ -1,0 +1,44 @@
+LEETCODE: 2226. Maximum Candies Allocated to K Children (BS)
+
+class Solution {
+public:
+   long long candies_bs(vector<int>& candies,int mid,int n)
+   {  long long count=0;
+      for(int i=0;i<n;i++)
+       {
+          count+=(candies[i]/mid);
+       }
+   return count;
+   }
+
+    int maximumCandies(vector<int>& candies, long long k) {
+        int n=candies.size();
+       
+        int maxi=INT_MIN;
+        long long sum=0;
+        for(int i=0;i<n;i++)
+        {
+            maxi=max(maxi,candies[i]);
+           sum+=candies[i];
+        }
+         if(k>sum)  return 0;
+        int low,high,mid;
+        low=1,high=maxi;
+        int ans=0;
+        while(low<=high)
+        {
+            mid=(low+high)/2;
+            long long res=candies_bs(candies,mid,n);
+            if(res>=k) 
+            {  ans=mid;
+            low=mid+1;
+            }
+            else
+            high=mid-1;
+           
+
+        }
+        return ans;
+       
+    }
+};

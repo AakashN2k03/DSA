@@ -1,0 +1,23 @@
+INSERTING NODE AT Kth POSITION
+
+if (head==null) 
+ { 
+   if(k==1)  return new Node(element);
+    else return   NULL;
+ }
+
+if(k==1) return new Node(element,head)
+
+Node *temp=head;
+int count=0;
+while(temp)
+{  count++;    
+  if(count==(position-1))
+     {  Node * newnode= new Node(element,temp->next);
+        temp->next=newNode;
+       return head;
+      }
+temp=temp->next;
+}
+return head;
+

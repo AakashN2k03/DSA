@@ -1,0 +1,25 @@
+GFG: Delete in a Singly Linked List(SLL)
+
+   Node* deleteNode(Node* head, int x) {
+      if(head==NULL) return NULL;
+      if(x==1) 
+      {  
+         Node* temp=head;
+         head=head->next;
+         free(temp);
+         return head;
+      }
+      Node* temp=head;
+      int count=0;
+      Node* prev=NULL;
+      while(temp)
+      {    count++;
+          if(count==x)
+          {
+              prev->next=prev->next->next;
+              free(temp);
+          }
+          prev=temp;
+          temp=temp->next;
+      }
+      return head;

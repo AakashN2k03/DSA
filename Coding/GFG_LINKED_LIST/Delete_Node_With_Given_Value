@@ -1,0 +1,25 @@
+GFG: DELETE NODE WITH GIVEN VALUE (SLL)
+
+  Node* deleteNode(Node* head, int value) {
+      if(head==NULL) return NULL;
+      if(head->data==value) 
+      {  
+         Node* temp=head;
+         head=head->next;
+         free(temp);
+         return head;
+      }
+
+      Node* temp=head;
+      Node* prev=NULL;
+      while(temp)
+      {    
+          if(temp->data==value)
+          {
+              prev->next=prev->next->next;
+              free(temp);
+          }
+          prev=temp;
+          temp=temp->next;
+      }
+      return head;

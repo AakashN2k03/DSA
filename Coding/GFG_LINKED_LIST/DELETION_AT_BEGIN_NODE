@@ -1,0 +1,10 @@
+DELETION AT BEGINING OF THE NODE (SLL)
+
+
+if (head==NULL) return NULL'
+
+Node *temp=head;
+head=head->next;
+
+delete(temp)
+return head;

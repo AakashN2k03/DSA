@@ -1,0 +1,18 @@
+CODE360:  Insert at end of Doubly Linked List (DLL)
+Node * insertAtTail(Node *head, int k) {
+   if(head==NULL) return new Node(k);
+   if(head->next==NULL)
+   {
+       Node* temp=new Node(k,head,nullptr);
+       head->next=temp;
+       return head;
+   }
+   Node* temp=head;
+   while(temp->next)
+   {   
+       temp=temp->next;
+   }
+   Node* x=new Node(k,temp,nullptr);
+   temp->next=x;
+   return head;
+}

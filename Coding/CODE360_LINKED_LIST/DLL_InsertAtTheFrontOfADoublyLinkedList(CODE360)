@@ -1,0 +1,11 @@
+CODE360:  Insert At The Front of a Doubly Linked List (DLL)
+
+Node* insertAtFront(Node *head, int k) {
+    if(head==NULL)
+    {
+         return new Node(k,nullptr,nullptr);
+    }
+    Node* temp=new Node(k,nullptr,head);
+    head->prev=temp;
+    return temp;
+}

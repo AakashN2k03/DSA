@@ -1,0 +1,19 @@
+CODE360: Delete node from Doubly Linked List (DLL)
+
+void deleteNode(Node* node) {
+    Node *back=node->prev;
+    Node *front=node->next;
+    if(front==NULL) // edge case if the given node is the last node
+    {
+        back->next=nullptr;
+        delete (node);
+        return; //since void function
+    }
+    back->next=front;
+    front->prev=back;
+    node->next=node->prev=nullptr;
+    delete(node);
+
+    
+
+}

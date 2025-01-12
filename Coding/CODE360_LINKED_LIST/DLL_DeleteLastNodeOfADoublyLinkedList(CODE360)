@@ -1,0 +1,17 @@
+CODE360: Delete Last Node of a Doubly Linked List(DLL)
+
+Node * deleteLastNode(Node *head) {
+     if(head==NULL || head->next==NULL) return nullptr;
+
+    Node * temp=head;
+    while(temp->next)
+    { 
+     temp=temp->next;
+    }
+    Node * back;
+    back=temp->prev;
+    back->next=nullptr;
+    temp->prev=nullptr;
+    delete(temp);
+    return head;
+}

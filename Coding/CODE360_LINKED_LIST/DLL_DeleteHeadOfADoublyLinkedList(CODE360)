@@ -1,0 +1,11 @@
+CODE360: Delete Head of a Doubly Linked List (DLL)
+
+Node * deleteHead(Node *head) {
+    if(head==NULL || head->next==NULL) return nullptr;
+
+    Node * temp=head;
+    head=head->next;
+    temp->next=temp->prev=nullptr;
+    head->prev=nullptr;
+    return head;
+}

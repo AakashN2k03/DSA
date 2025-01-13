@@ -1,0 +1,44 @@
+CODE 360: Reverse A Doubly Linked List (DLL)
+
+// Implementation of DLL using stack (easy)
+
+Node* reverseDLL(Node* head)
+{   
+    stack<int> st;
+    if(head==NULL || head->next==NULL) return head;
+
+    Node* temp=head;
+    while(temp)
+    {
+        st.push(temp->data);
+        temp=temp->next;
+    }  
+    temp=head;
+    while(temp)
+    {
+          temp->data=st.top();
+          st.pop();
+          temp=temp->next;
+    }
+    return head;
+}
+
+// MOST OPTIMIZED WAY only DLL
+
+Node* reverseDLL(Node* head)
+{   
+    if(head==NULL || head->next==NULL) return head;
+
+    Node* prev;
+    Node* current=head;
+    while(current)
+    {
+        prev=current->prev;
+        current->prev=current->next; // JUST SWAPING CONCEPT USED//
+        current->next=prev;
+        
+        current=current->prev;
+    }
+    return prev->prev;
+}
+

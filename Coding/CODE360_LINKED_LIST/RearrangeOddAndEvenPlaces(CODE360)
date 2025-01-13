@@ -1,0 +1,18 @@
+CODE360: Rearrange Odd and Even Places (SLL)
+
+Node* oddEvenList(Node* head)
+{
+	Node* odd=head;
+    Node* even=head->next;
+    Node* even_head=head->next; // for connecting odd to even nodes
+
+    while(even && even->next) // odd is always ahead of even,so if even and even_next reaches null we can stop the loop
+    {
+        odd->next=odd->next->next;
+        even->next=even->next->next;
+        odd=odd->next;
+        even=even->next;
+    }
+    odd->next=even_head; // connection from odd nodes to even
+    return head;
+}

@@ -1,0 +1,79 @@
+CODE360: Sort linked list of 0s 1s 2s (SLL)
+
+  // EASY METHOD
+Node* sortList(Node *head){
+    int count0,count1,count2;
+    count0=count1=count2=0;
+    Node* temp;
+    temp=head;
+    while(temp)
+    {
+        if(temp->data==0) count0++;
+        if(temp->data==1) count1++;
+        if(temp->data==2) count2++;
+        temp=temp->next;
+    }
+    temp=head;
+
+    while(temp)
+    {
+        if(count0) 
+        {
+            temp->data=0;
+            count0--;
+        } 
+        else if(count1) 
+        {
+            temp->data=1;
+            count1--;
+        } 
+        else{
+            temp->data=2;
+            count2--;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+
+//   THE MOST OPTIMIZED WAY
+
+Node* sortList(Node *head){
+        Node *Onehead = new Node(-1);
+        Node *Twohead = new Node(-1);
+        Node *Zerohead = new Node(-1);
+        
+        Node* zero = Zerohead;
+        Node* one = Onehead;
+        Node* two = Twohead;
+
+        Node* temp = head;
+        while (temp) {
+            if (temp->data == 0) {
+                zero->next = temp;
+                zero = zero->next;
+            } else if (temp->data== 1) {
+                one->next = temp;
+                one = one->next;
+            } else {
+                two->next = temp;
+                two = two->next;
+            }
+            temp = temp->next;
+        }
+
+        // Connect the three lists properly
+        zero->next = (Onehead->next) ? Onehead->next : Twohead->next;
+        one->next = Twohead->next;
+        two->next = nullptr;
+
+        // Update the head to point to the sorted list
+        Node *newnode = Zerohead->next;
+
+        // Clean up the dummy nodes
+        delete Zerohead;
+        delete Onehead;
+        delete Twohead;
+
+        return newnode;
+}

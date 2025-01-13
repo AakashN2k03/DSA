@@ -1,0 +1,30 @@
+CODE360: Add Two Numbers (SLL)
+Node *addTwoNumbers(Node *num1, Node *num2)
+{
+    Node*dummy=new Node(-1); // can be any number as it is dummy
+    Node* temp1=num1;
+    Node* temp2=num2;
+    Node* current=dummy;
+    int sum,carry;
+    sum=carry=0;
+    while(temp1 || temp2)
+     {   sum=carry;
+        if(temp1) sum+=temp1->data;
+        if(temp2) sum+=temp2->data;
+
+        Node* newnode=new Node(sum%10);
+        carry=sum/10;
+        
+        current->next=newnode;// head remain same,just moving current pointer  from dummy to new nodes
+        current=newnode; //current->next;
+
+        if(temp1) temp1=temp1->next;
+        if(temp2) temp2=temp2->next;
+    }
+    if(carry)
+    {
+        Node* newnode=new Node(carry);
+        current->next=newnode;
+    }
+    return dummy->next;// pointing to first node of sumList
+}

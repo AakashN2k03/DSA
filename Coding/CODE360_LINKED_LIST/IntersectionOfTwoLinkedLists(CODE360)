@@ -1,0 +1,45 @@
+CODE360:  Intersection of Two Linked Lists (SLL)
+
+Node* findIntersection(Node *firstHead, Node *secondHead)
+{
+    Node* temp1=firstHead;
+    Node* temp2=secondHead;
+    while(temp1!=temp2) // if temp1 and temp2 does not point to same first node
+    {
+        temp1=temp1->next;
+        temp2=temp2->next;
+
+        if(temp1==NULL) temp1=secondHead;
+        if(temp2==NULL) temp2=firstHead;
+
+        if(temp1==temp2) return temp1;
+    }
+    return temp1;  // if temp1 and temp2 points to same first node
+}
+
+//  USING   UNORDERED SET
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_set<ListNode*> sett;
+        ListNode* temp=headA;
+        while(temp)
+        {
+            sett.insert(temp);
+            temp=temp->next;
+        } 
+        temp=headB;
+        while(temp)
+        {
+            if(sett.find(temp)!=sett.end())
+            {
+                return temp;
+            }
+            temp=temp->next;
+        }
+
+        return NULL;
+        
+    }
+};

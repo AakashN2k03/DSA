@@ -24,7 +24,7 @@ bool isPalindrome(Node *head)
     Node* slow=head;
     Node* fast=head;
    // finding mid element for reverse one half of list
-    while(fast->next && fast->next->next)
+    while(fast && fast->next)
     {    //for odd   ||  for even
         slow=slow->next;
         fast=fast->next->next;

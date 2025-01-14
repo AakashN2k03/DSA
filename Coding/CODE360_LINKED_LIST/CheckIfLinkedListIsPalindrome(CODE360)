@@ -1,0 +1,78 @@
+CODE360: Check If Linked List Is Palindrome
+
+ // 1. FIND MID ELEMENT
+ // 2. REVERSE ONE HALF OF THE LIST
+ // 3. COMAPRE THE ELEMENT
+
+
+Node* reverselist(Node*head)
+{
+    Node*temp=head;
+    Node*prev=nullptr;
+    while(temp)
+    {
+        Node* front=temp->next;
+        temp->next=prev;
+        prev=temp;
+        temp=front;
+    }
+    return prev;
+}
+
+bool isPalindrome(Node *head)
+{
+    Node* slow=head;
+    Node* fast=head;
+   // finding mid element for reverse one half of list
+    while(fast->next && fast->next->next)
+    {    //for odd   ||  for even
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+     Node* newhead=reverselist(slow->next);
+     Node* second=newhead;
+     Node* first=head;
+
+     while(second->next)
+     {
+         if(first->data!=second->data)
+         {
+             reverselist(newhead);// reverse the reversed list to get original list
+             return false;
+         }
+         first=first->next;
+         second=second->next;
+     }
+     reverselist(newhead);// reverse the reversed list to get original list
+     return true;
+}
+
+
+//  EASY METHOD USING STACK
+// LEETCODE 
+
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        stack<int>st;
+        ListNode* temp=head;
+        while(temp)
+        {
+            st.push(temp->val);
+            temp=temp->next;
+        }
+        temp=head;
+        while(temp)
+        {
+            if(temp->val!=st.top())
+            {
+                return false;
+            }
+             st.pop();
+             temp=temp->next;
+        }
+        return true;
+        
+    }
+};

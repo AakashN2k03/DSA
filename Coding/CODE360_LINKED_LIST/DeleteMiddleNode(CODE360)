@@ -1,0 +1,19 @@
+CODE360:  Delete Middle Node (SLL)
+
+Node* deleteMiddle(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+    Node*temp;
+  
+    if(head==NULL || head->next==NULL) return NULL;
+    while(fast && fast->next)
+    {   temp=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+
+    Node*middle=temp->next;
+    temp->next=temp->next->next;
+    free(middle);
+    return head;
+}

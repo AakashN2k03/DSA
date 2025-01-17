@@ -1,0 +1,30 @@
+CODE360:  Merge Two Sorted Linked Lists (SLL)
+ 
+Node<int>* sortTwoLists(Node<int>* first, Node<int>* second)
+{
+    Node<int>* t1=first;
+    Node<int>* t2=second;
+
+    Node<int>* dummynode=new Node<int>(-1);
+    Node<int>* temp;
+    temp=dummynode;
+
+    while(t1 && t2)
+    {
+        if(t1->data<t2->data)
+        {
+            temp->next=t1;
+            temp=t1;
+            t1=t1->next;
+        }
+        else{
+            temp->next=t2;
+            temp=t2;
+            t2=t2->next;
+        }
+    }
+
+    if(t1) temp->next=t1;
+    else temp->next=t2;
+    return dummynode->next;
+}

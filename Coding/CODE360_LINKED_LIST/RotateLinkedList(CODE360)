@@ -1,0 +1,33 @@
+CODE360:  Rotate Linked List (SLL)
+
+Node *rotate(Node *head, int k) {
+    if (!head || k == 0) return head; // Edge case: empty list or no rotation
+
+    // Step 1: Find the length of the list and the tail node
+    Node* tail = head;
+    int len = 1;
+    while (tail->next) {
+        len++;
+        tail = tail->next;
+    }
+
+    // Step 2: Normalize k to avoid unnecessary rotations
+    k = k % len;
+    if (k == 0) return head; // No rotation needed if k is a multiple of len
+
+    // Step 3: Make the list circular
+    tail->next = head;
+
+    // Step 4: Find the new tail (len - k steps from the beginning)
+    int stepsToNewTail = len - k;
+    Node* newTail = head;
+    for (int i = 1; i < stepsToNewTail; i++) {
+        newTail = newTail->next;
+    }
+
+    // Step 5: Update the new head and break the circular link
+    Node* newHead = newTail->next;
+    newTail->next = nullptr;
+
+    return newHead;
+}

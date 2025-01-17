@@ -1,0 +1,56 @@
+CODE360:  Reverse List In K Groups (SLL)
+// perform dry run as much as possible since its a hard problem..also see youtube for better understanding
+
+Node* reverselist(Node* head)
+{
+     Node* prev=NULL;
+     Node*temp=head;
+    while(temp)
+    {   Node*front=temp->next;
+    temp->next=prev;
+    prev=temp;
+    temp=front;
+
+    }
+    return prev;
+}
+Node* getkthnode(Node*head ,int k)
+{   k-=1;
+Node* temp=head;
+    while(temp && k>0)
+    {
+        k--;
+        temp=temp->next;
+    }
+    return temp;
+}
+Node* kReverse(Node* head, int k) {
+
+    Node*temp=head;
+  
+    Node*prevnode=NULL;
+   while(temp)
+   {   Node* kthnode=getkthnode(temp,k);
+     if(kthnode==NULL)
+    {
+        if(prevnode) prevnode->next=temp;
+        return head;
+    }
+
+    Node*nextnode=kthnode->next;
+    kthnode->next=NULL;
+   
+   reverselist(temp);
+   if(temp==head)
+   {
+       head=kthnode;
+   } 
+   else {
+       prevnode->next = kthnode;
+   }
+   prevnode = temp;
+   temp = nextnode;
+   }
+   return head;
+    
+}

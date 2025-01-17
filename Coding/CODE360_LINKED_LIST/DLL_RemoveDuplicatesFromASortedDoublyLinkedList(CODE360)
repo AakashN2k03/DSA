@@ -1,0 +1,20 @@
+CODE360:  Remove duplicates from a sorted Doubly Linked List (DLL)
+
+Node * removeDuplicates(Node *head)
+{
+    Node*temp=head;
+    while(temp && temp->next)
+    {
+       Node* nextnode=temp->next;
+       while(nextnode && nextnode->data == temp->data)
+       {
+           Node * duplicate=nextnode;
+           nextnode=nextnode->next;
+           free(duplicate);
+       }
+       temp->next=nextnode;
+      if(nextnode) nextnode->prev=temp; // eg 1<->1 
+       temp=temp->next;
+    }
+    return head;
+}

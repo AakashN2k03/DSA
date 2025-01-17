@@ -1,0 +1,64 @@
+CODE360:  Find pairs with given sum in doubly linked list (DLL and TWO POINTER)
+
+Node* findtail(Node* head)
+{
+    Node* temp=head;
+    while(temp->next)
+    {
+        temp=temp->next;
+    }
+    return temp;
+}
+vector<pair<int, int>> findPairs(Node* head, int target)
+{
+    Node* temp=head;// first node
+    Node* tail=findtail(head); // last node
+    vector<pair<int,int>> res;
+    while(temp->data < tail->data)
+    {
+        if((temp->data+tail->data)==target)
+        {
+                 res.push_back({temp->data,tail->data});
+                 temp=temp->next;
+                 tail=tail->prev;
+        }
+        else if((temp->data+tail->data)<target)
+        {
+            temp=temp->next;
+        }
+        else{
+            tail=tail->prev;
+        }
+        
+    }
+    return res;
+}
+
+
+// easy method not optimized one 
+
+
+class Solution
+{
+public:
+   vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
+{
+    vector<pair<int, int>> res;
+    Node* temp = head;
+
+    while (temp)
+    {
+        Node* temp2 = temp->next;  // Start from the next node
+
+        while (temp2)  // Iterate through the rest of the list
+        {
+            if (temp->data + temp2->data == target)
+            {
+                res.push_back({temp->data, temp2->data});  // Add the pair
+            }
+            temp2 = temp2->next;  // Move to the next node
+        }
+        temp = temp->next;  // Move the outer pointer
+    }
+    return res;
+}

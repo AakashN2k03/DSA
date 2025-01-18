@@ -1,0 +1,57 @@
+CODE360:  Design Browser History (DLL)
+
+#include <string>
+using namespace std;
+
+class Node {
+public:
+    string data;
+    Node* next;
+    Node* back;
+
+    // Default constructor
+    Node() : data(""), next(nullptr), back(nullptr) {}
+
+    // Constructor with data
+    Node(string x) : data(x), next(nullptr), back(nullptr) {}
+
+    // Constructor with data, next, and back pointers
+    Node(string x, Node* next, Node* back) : data(x), next(next), back(back) {}
+};
+
+class Browser {
+private:
+    Node* current; // Pointer to the current page
+
+public:
+    // Constructor
+    Browser(string &homepage) {
+        current = new Node(homepage); // Initialize the homepage
+    }
+
+    // Visit a new URL
+    void visit(string &url) {
+        Node* newnode = new Node(url);
+        current->next = newnode; // Link current to the new node
+        newnode->back = current; // Link new node back to the current node
+        current = newnode;       // Update current to the new node
+    }
+
+    // Go back `steps` times
+    string back(int steps) {
+        while (steps > 0 && current->back != nullptr) {
+            current = current->back; // Move back
+            steps--;
+        }
+        return current->data; // Return the current page's URL
+    }
+
+    // Go forward `steps` times
+    string forward(int steps) {
+        while (steps > 0 && current->next != nullptr) {
+            current = current->next; // Move forward
+            steps--;
+        }
+        return current->data; // Return the current page's URL
+    }
+};

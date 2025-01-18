@@ -1,0 +1,55 @@
+CODE360: Clone a Linked List with random pointers (SLL)
+
+// do dry run as much as possible\
+
+//1. Insert copynode between original nodes
+//2.  connect random pointers for copynodes
+//3.  connect next pointer for copynodes
+
+void * Insertbetweennodes(Node* head)
+{
+	Node* temp=head;
+	while(temp)
+	{
+		Node* copynode=new Node(temp->data);
+		copynode->next=temp->next;
+		temp->next=copynode;
+		temp=temp->next->next;
+
+	}
+
+}
+
+void * RandomPointer(Node* head)
+{
+	Node* temp=head;
+	while(temp)
+	{
+		Node*copynode=temp->next;
+		if(temp->random) copynode->random=temp->random->next;
+		else copynode->random=nullptr;
+		temp=temp->next->next;
+	}
+	
+}
+
+Node * Connectingnext(Node* head)
+{
+	Node*temp=head;
+	Node*dummynode=new Node(-1);
+	Node*res=dummynode;
+	while(temp)
+	{
+		res->next=temp->next;
+		res=res->next;
+
+		temp->next=temp->next->next;
+		temp=temp->next;
+	}
+	return dummynode->next;
+}
+Node *cloneLL(Node *head){
+	Insertbetweennodes(head);
+	RandomPointer(head);
+	return Connectingnext(head);
+}

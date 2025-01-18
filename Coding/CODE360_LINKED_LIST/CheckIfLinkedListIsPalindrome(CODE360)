@@ -4,48 +4,59 @@ CODE360: Check If Linked List Is Palindrome
  // 2. REVERSE ONE HALF OF THE LIST
  // 3. COMAPRE THE ELEMENT
 
-
-Node* reverselist(Node*head)
-{
-    Node*temp=head;
-    Node*prev=nullptr;
-    while(temp)
-    {
-        Node* front=temp->next;
-        temp->next=prev;
-        prev=temp;
-        temp=front;
+class Solution {
+  public:
+    // Helper function to reverse a singly linked list
+    Node* reverselist(Node* head) {
+        Node* prev = nullptr;
+        Node* temp = head;
+        while (temp) {
+            Node* front = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = front;
+        }
+        return prev;
     }
-    return prev;
-}
 
-bool isPalindrome(Node *head)
-{
-    Node* slow=head;
-    Node* fast=head;
-   // finding mid element for reverse one half of list
-    while(fast && fast->next)
-    {    //for odd   ||  for even
-        slow=slow->next;
-        fast=fast->next->next;
+    // Function to check whether the list is palindrome.
+    bool isPalindrome(Node* head) {
+        // Edge case: Empty list or single node list
+        if (head == nullptr || head->next == nullptr) {
+            return true;
+        }
+
+        // Step 1: Use two pointers to find the middle of the list
+        Node* slow = head;
+        Node* fast = head;
+
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        // Step 2: Reverse the second half of the list
+        Node* newhead = reverselist(slow);
+        Node* second = newhead;
+        Node* first = head;
+
+        // Step 3: Compare the two halves
+       // bool isPalin = true;
+        while (second) {  // Compare all elements in the reversed second half
+            if (first->data != second->data) {
+                return false;
+            }
+            first = first->next;
+            second = second->next;
+        }
+
+        // Step 4: Restore the original list by reversing the second half back
+        reverselist(newhead);
+
+        return true;//  return isPalin;
     }
-     Node* newhead=reverselist(slow->next);
-     Node* second=newhead;
-     Node* first=head;
+};
 
-     while(second->next)
-     {
-         if(first->data!=second->data)
-         {
-             reverselist(newhead);// reverse the reversed list to get original list
-             return false;
-         }
-         first=first->next;
-         second=second->next;
-     }
-     reverselist(newhead);// reverse the reversed list to get original list
-     return true;
-}
 
 
 //  EASY METHOD USING STACK

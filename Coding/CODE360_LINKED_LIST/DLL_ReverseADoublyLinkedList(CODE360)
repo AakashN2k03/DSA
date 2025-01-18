@@ -25,20 +25,27 @@ Node* reverseDLL(Node* head)
 
 // MOST OPTIMIZED WAY only DLL
 
-Node* reverseDLL(Node* head)
-{   
-    if(head==NULL || head->next==NULL) return head;
+class Solution {
+  public:
+    // Function to reverse a doubly linked list
+    DLLNode* reverseDLL(DLLNode* head) {
+        // Base cases: Empty list or single node list
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
 
-    Node* prev;
-    Node* current=head;
-    while(current)
-    {
-        prev=current->prev;
-        current->prev=current->next; // JUST SWAPING CONCEPT USED//
-        current->next=prev;
-        
-        current=current->prev;
+        DLLNode* back = NULL;
+        DLLNode* temp = head;
+
+        // Traverse the list and swap next and prev pointers
+        while (temp != NULL) {
+            back = temp->prev;       // Save the previous node
+            temp->prev = temp->next; // Swap prev and next
+            temp->next = back;       // Update next pointer
+            temp = temp->prev;       // Move to the next node (which is the previous node in the original list)
+        }
+
+        // Return the new head (last node in the original list)
+        return back->prev;
     }
-    return prev->prev;
-}
-
+};

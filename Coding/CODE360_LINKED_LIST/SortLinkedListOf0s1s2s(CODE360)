@@ -51,13 +51,13 @@ Node* sortList(Node *head){
         while (temp) {
             if (temp->data == 0) {
                 zero->next = temp;
-                zero = zero->next;
+                zero = zero->next;  // can use zero=temp;
             } else if (temp->data== 1) {
                 one->next = temp;
-                one = one->next;
+                one = one->next;  // can use one=temp;
             } else {
                 two->next = temp;
-                two = two->next;
+                two = two->next; // can use two=temp;
             }
             temp = temp->next;
         }

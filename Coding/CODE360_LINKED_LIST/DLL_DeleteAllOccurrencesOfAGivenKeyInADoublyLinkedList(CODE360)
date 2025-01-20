@@ -1,7 +1,7 @@
 CODE360:  Delete all occurrences of a given key in a doubly linked list (DLL)
 
 // USE DRY RUN FOR MORE UNDERSTANDING.
-
+ 
 Node * deleteAllOccurrences(Node* head, int k) {
     Node*temp=head;
     while(temp)

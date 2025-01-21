@@ -1,0 +1,29 @@
+GFG: Queue using Linked List (LL)
+
+void MyQueue:: push(int x)
+{         
+        QueueNode* newnode=new QueueNode(x);
+        if(front == NULL)
+        {
+            front=rear=newnode;
+        }
+        else{
+             rear->next=newnode;
+             rear=newnode;
+        }
+}
+
+//Function to pop front element from the queue.
+int MyQueue :: pop()
+{       if(front==nullptr)
+        {
+            return -1;
+        }
+        
+        int popped_data=front->data;
+        QueueNode* delnode=front;
+        front=front->next;
+        delete(delnode);
+        
+        return popped_data;
+}

@@ -1,0 +1,25 @@
+GFG:  Stack using Linked List (LL)
+
+class MyStack {
+  private:
+    StackNode *top;
+
+  public:
+    void push(int x) {
+       // top=NULL
+        StackNode* temp=new StackNode(x);
+        temp->next=top;
+        top=temp;
+    }
+
+    int pop() {
+        if(top==NULL) return -1;
+        StackNode* delnode=top;
+        int popped_data=delnode->data;
+        top=top->next;
+        delete(delnode);
+        return popped_data;
+    }
+
+    MyStack() { top = NULL; }
+};

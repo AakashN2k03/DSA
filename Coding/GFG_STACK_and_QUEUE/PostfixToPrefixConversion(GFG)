@@ -1,0 +1,36 @@
+GFG: Postfix to Prefix Conversion (STACK)
+
+class Solution {
+  public:
+    string postToPre(string s) {
+        
+                stack<string> st; // Stack to store intermediate infix expressions
+        
+        for (int i = 0; i < s.length(); i++) {
+            // If the current character is an operand (letter or digit)
+            if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9')) {
+                // Push it onto the stack as a string
+                string op(1, s[i]); // Convert char to string
+                st.push(op);
+            }
+            // If the current character is an operator
+            else {
+                // Pop the top two elements from the stack
+                string operand2 = st.top();
+                st.pop();
+                string operand1 = st.top();
+                st.pop();
+                
+                // Form a new string with parentheses
+                string res = s[i]+ operand1  + operand2 ;
+                
+                // Push the result back onto the stack
+                st.push(res);
+            }
+        }
+        
+        // The final string on the stack is the infix expression
+        return st.top();
+
+    }
+};

@@ -1,0 +1,59 @@
+LEETCODE: 85. Maximal Rectangle (STACK)
+
+  // PREREQ  : should solved largestRectangleArea problem
+
+class Solution {
+public:
+ int largestRectangleArea(vector<int>& heights) {
+        stack<int> st; // Stack to store indices of heights
+        int n = heights.size();
+        int maxi = 0;
+
+        for (int i = 0; i < n; i++) {
+            // Process all heights greater than the current height
+            while (!st.empty() && heights[st.top()] > heights[i]) {
+                int element = st.top(); // Height at this index
+                st.pop();
+                int pse = st.empty() ? -1 : st.top(); // Previous smaller element
+                int nse = i;                         // Next smaller element
+                maxi = max(maxi, heights[element] * (nse - pse - 1)); // Area calculation
+            }
+            st.push(i);
+        }
+
+        // Process remaining elements in the stack
+        while (!st.empty()) {
+            int element = st.top();
+            st.pop();
+            int pse = st.empty() ? -1 : st.top();
+            int nse = n;
+            maxi = max(maxi, heights[element] * (nse - pse - 1));
+        }
+
+        return maxi;
+    }
+
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        if (matrix.empty() || matrix[0].empty()) return 0;
+
+        int n = matrix.size();
+        int m = matrix[0].size();
+        vector<int> heights(m, 0); // Heights of the current histogram row
+        int maxRectangle = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                // Update the heights for the current row
+                if (matrix[i][j] == '1') {
+                    heights[j]=heights[j]+ 1;
+                } else {
+                    heights[j] = 0;
+                }
+            }
+            // Calculate the largest rectangle area in the histogram
+            maxRectangle = max(maxRectangle, largestRectangleArea(heights));
+        }
+
+        return maxRectangle;
+    }
+};

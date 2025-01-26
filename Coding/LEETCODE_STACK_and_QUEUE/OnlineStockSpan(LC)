@@ -1,0 +1,37 @@
+LEETCODE:  901. Online Stock Span (STACK)
+
+//         READ THE PROBLEM DESCRIPTION PROPERLY AND ANALYSE THE CODE STRUCTURE 
+
+class StockSpanner {
+public:
+    stack<pair<int, int>> st; // Stack to store {price, index}
+    int index;                // Index to track the current day
+
+    // Constructor to initialize class variables
+    StockSpanner() {
+        index = -1; // Initialize index to -1
+    }
+
+    int next(int price) {
+        index++; // Increment index for the current day
+
+        // Remove all prices from the stack that are <= current price
+        while (!st.empty() && st.top().first <= price) {
+            st.pop();
+        }
+
+        // Calculate the span
+        int ans = index-(st.empty() ? -1:st.top().second);
+
+        // Push the current price and index onto the stack
+        st.push({price, index});
+
+        return ans;
+    }
+};
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner* obj = new StockSpanner();
+ * int param_1 = obj->next(price);
+ */

@@ -1,0 +1,44 @@
+LEETCODE: 402. Remove K Digits (STACK and STRING )
+
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        stack<char> st;
+        
+        // Iterate through each character in the input string
+        for (char c : num) {
+            // Remove elements from the stack if conditions are met
+            while (!st.empty() && k > 0 && st.top() > c) {
+                st.pop();
+                k--;
+            }
+            st.push(c); // Push the current digit onto the stack
+        }
+        
+        // Remove any remaining digits if k > 0
+        while (k > 0 && !st.empty()) {
+            st.pop();
+            k--;
+        }
+        
+        // Build the result string from the stack
+        string res = "";
+        while (!st.empty()) {
+            res += st.top(); //concating char at begining of the string take longer time(n^2) since all the previous char must be shifted to right;
+            st.pop();
+        }
+
+        // Reverse the result to get the correct order
+        reverse(res.begin(), res.end());
+        
+        // Remove leading zeros from the result
+        while (!res.empty() && res.back() == '0') {
+        res.pop_back();  // Removes trailing zeros from the string
+        }
+        reverse(res.begin(), res.end());  // Reverses the string to get the final number
+
+
+        // If the result is empty after removing zeros, return "0"
+        return res.empty() ? "0" : res;
+    }
+};

@@ -1,0 +1,67 @@
+LEETCODE: 735. Asteroid Collision (STACK or LIST)
+
+//                 USING LIST   ///
+
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        list<int> st;
+        for(int i=0;i<asteroids.size();i++)
+        {
+           if(asteroids[i]>0) st.push_back(asteroids[i]);
+           else{
+            while(!st.empty() && st.back()>0 && st.back()<abs(asteroids[i]))
+            {
+                st.pop_back();
+            }
+            if(!st.empty() && st.back()==abs(asteroids[i]))
+            {
+                 st.pop_back();
+            }
+            else if(st.empty() || st.back()<0)
+            {
+                st.push_back(asteroids[i]);
+            }
+           }
+        }
+        return vector<int>(st.begin(),st.end());
+    }
+};
+
+
+//               USING STACK   //
+
+#include <vector>
+#include <stack>
+#include <cmath>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        stack<int> st; // Stack to simulate collisions
+        for (int i = 0; i < asteroids.size(); i++) {
+            if (asteroids[i] > 0) {
+                st.push(asteroids[i]); // Push positive asteroid
+            } else {
+                // Process negative asteroid
+                while (!st.empty() && st.top() > 0 && st.top() < abs(asteroids[i])) {
+                    st.pop(); // Remove smaller positive asteroid
+                }
+                if (!st.empty() && st.top() == abs(asteroids[i])) {
+                    st.pop(); // Equal-sized asteroids destroy each other
+                } else if (st.empty() || st.top() < 0) {
+                    st.push(asteroids[i]); // Push negative asteroid if no collision
+                }
+            }
+        }
+
+        // Transfer stack elements to a vector in correct order
+        vector<int> result(st.size());
+        for (int i = result.size() - 1; i >= 0; i--) {
+            result[i] = st.top();
+            st.pop();
+        }
+        return result;
+    }
+};

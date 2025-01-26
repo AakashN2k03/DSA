@@ -1,0 +1,33 @@
+LEETCODE:  84. Largest Rectangle in Histogram (STACK)
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int>st; // storing index
+        int i,maxi,n;
+        n=heights.size();
+        maxi=0;
+        for(i=0;i<n;i++)
+        {
+            while(!st.empty() && heights[st.top()]>heights[i])
+            {
+                int element=st.top();
+                st.pop();
+                int pse=st.empty()?-1:st.top();
+                int nse=i;
+                maxi=max(maxi,(heights[element]*(nse-pse-1)));
+            }
+            st.push(i);
+        }
+
+        while(!st.empty())
+        {
+              int element=st.top();
+                st.pop();
+                int pse=st.empty()?-1:st.top();
+                int nse=n;
+                maxi=max(maxi,(heights[element]*(nse-pse-1)));
+        }
+        return maxi;
+    }
+};

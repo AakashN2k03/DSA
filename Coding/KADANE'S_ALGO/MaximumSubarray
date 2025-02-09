@@ -1,0 +1,39 @@
+LEETCODE: 53. Maximum Subarray 
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n=nums.size();
+        int maxsum,sum;
+        maxsum=INT_MIN,sum=0;
+        for(int i=0;i<n;i++)
+        {  sum+=nums[i];
+           maxsum=max(maxsum,sum);
+           if(sum<0) sum=0;
+            
+        }
+        return maxsum;
+    }
+};
+
+ // FOR NEGATIVE VALUES IN ARRAY IT MUST RETURN 0 AS RESULT
+
+CODE360: Maximum Subarray Sum
+#include <vector>
+#include <climits>
+using namespace std;
+
+long long maxSubarraySum(vector<int> arr, int n) {
+    long long sum = 0, maxsum = 0;
+     // Initialize maxsum as 0 to handle empty subarray
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+        if (sum > maxsum) {
+            maxsum = sum;
+        }
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+    return maxsum;
+}

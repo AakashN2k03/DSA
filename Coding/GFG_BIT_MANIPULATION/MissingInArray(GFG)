@@ -1,0 +1,36 @@
+GFG: Missing in Array ( XOR )
+
+class Solution {
+  public:
+    int missingNumber(vector<int>& arr) {
+      int n=arr.size()+1;
+      int xor1=0;
+      int xor2=0;
+      for(int i=1;i<=n;i++)
+      {
+          xor1^=i;
+      }
+      for(int num:arr)
+      {
+          xor2^=num;
+      }
+      
+      return xor1^xor2;
+    }
+};
+
+// LEETCODE: 268. Missing Number
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+     int n=nums.size();
+    int sum=0;
+    for(int i=0;i<n;i++)
+    {
+        sum+=nums[i];
+    }
+    n=(n*(n+1))/2;
+    return n-sum;
+    }
+};

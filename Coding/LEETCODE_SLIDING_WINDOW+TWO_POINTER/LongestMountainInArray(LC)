@@ -1,0 +1,42 @@
+LEETCODE: 845. Longest Mountain in Array (TWO POINTER)
+
+// read the constraints thoroughly
+
+class Solution {
+public:
+    int longestMountain(vector<int>& arr) {
+        int n=arr.size();
+        int l,r;
+        int maxlen=0;
+        for(int i=1;i<n-1;i++)
+        {
+              if(arr[i]>arr[i-1] && arr[i]>arr[i+1])
+              {
+                l=r=i;
+                while(l>0 && arr[l]>arr[l-1]) l--;
+                while(r<n-1 && arr[r]>arr[r+1]) r++;
+
+                maxlen=max(maxlen,r-l+1);
+              }
+        }
+        return maxlen;
+        
+    }
+};
+
+// The first element (arr[0]) cannot be a peak (no left side).
+// The last element (arr[n-1]) cannot be a peak (no right side).
+// So, we only check peaks from index 1 to n-2.
+
+
+// Why left > 0 and right < n-1 while expanding?
+// After finding a peak at arr[i], we expand left and right:
+
+// Expanding Left (while left > 0 && arr[left] > arr[left - 1]):
+
+// We move leftward as long as arr[left] > arr[left - 1].
+// left > 0 ensures we don’t go out of bounds.
+// Expanding Right (while right < n-1 && arr[right] > arr[right + 1]):
+
+// We move rightward as long as arr[right] > arr[right + 1].
+// right < n-1 ensures we don’t go out of bounds.

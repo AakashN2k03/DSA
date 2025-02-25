@@ -1,0 +1,22 @@
+LEETCODE: 941. Valid Mountain Array (ARRAY)
+
+class Solution {
+public:
+    bool validMountainArray(vector<int>& arr) {
+        int n=arr.size();
+       int i=1;
+
+       while(i<n && arr[i]>arr[i-1]) i++; // lesser numbers to peak
+
+       if(i==1 || i==n) return false; // since first and last element can be peak element
+    
+    while(i<n && arr[i]<arr[i-1])  // peak to lesser numbers
+    {
+        i++;
+    }
+     return i==n;
+      
+       
+        
+    }
+};

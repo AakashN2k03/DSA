@@ -1,0 +1,52 @@
+LEETCODE: 143. Reorder List (SLL,HARE AND TORTOISE)
+
+          // 1. find middle node
+          // 2. reverse second half of LL
+          // 3. merge the two LL
+
+
+class Solution {
+public:
+  ListNode* reverselist(ListNode* current)
+  {  
+       ListNode* temp=current;
+       ListNode*prev=nullptr;
+       while(temp)
+       {
+        ListNode* front=temp->next;
+        temp->next=prev;
+        prev=temp;
+        temp=front;
+       }        
+       return prev;
+  } 
+    void reorderList(ListNode* head) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast && fast->next)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+
+        ListNode* nextnode=slow->next;
+        slow->next=nullptr;
+
+         ListNode*second=reverselist(nextnode);
+         ListNode* first=head;
+      
+         while(second)
+         {
+            ListNode* temp1=first->next;
+            ListNode* temp2=second->next;
+
+            first->next=second;
+            second->next=temp1;
+
+            first=temp1;
+            second=temp2;
+         }
+  
+        
+    }
+};

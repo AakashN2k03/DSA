@@ -1,0 +1,17 @@
+LEETCODE: 378. Kth Smallest Element in a Sorted Matrix 
+
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+        vector<int> res;
+          for (auto& row : matrix) {
+        for (int num : row) {
+            res.push_back(num);
+        }
+    }
+    sort(res.begin(),res.end());
+     return res[k-1];   
+    }
+};
+
+    // DO IT IN BINARY SEARCH

@@ -1,0 +1,25 @@
+LEETCODE: 1695. Maximum Erasure Value (SLIDING WINDOW)
+
+class Solution {
+public:
+    int maximumUniqueSubarray(vector<int>& nums) {
+        int l,r,n,maxcount,sum;
+        maxcount=sum=l=r=0;
+        unordered_map<int,int>mpp;
+        n=nums.size();
+        while(r<n)
+        {   mpp[nums[r]]++;
+        sum+=nums[r];
+
+        while(mpp[nums[r]]>1)
+        {   mpp[nums[l]]--;
+            sum-=nums[l];
+            l++;
+
+        }
+        maxcount=max(maxcount,sum);
+              r++;
+        }
+        return maxcount;
+    }
+};

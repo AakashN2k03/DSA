@@ -1,0 +1,33 @@
+LEETCODE: 1493. Longest Subarray of 1's After Deleting One Element (SLIDING WINDOW + TWO POINTER)
+
+  //This sum is similar to Max Consecutive Ones III (SLIDING WINDOW + TWO POINTER),but in the return just add -1 in the result
+  //as we are deleting one element in a subarray
+
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+      int l = 0, r = 0, maxlen = 0, zeros = 0;
+        int n = nums.size();
+
+      while(r<n)
+      {
+          if(nums[r]==0)
+          {
+            zeros++;
+          }
+
+          while(zeros>1)
+          {
+            if(nums[l]==0)
+            {
+                zeros--;
+            }
+            l++;
+          }
+          maxlen=max(maxlen,r-l+1);
+          r++;
+      }
+      return maxlen-1;
+    }
+    
+};

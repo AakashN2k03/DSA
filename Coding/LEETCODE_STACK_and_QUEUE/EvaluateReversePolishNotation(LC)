@@ -1,0 +1,52 @@
+LEETCODE: 150. Evaluate Reverse Polish Notation (STACK)
+
+
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<int>st;
+        int ans=0;
+        for(string token:tokens)
+        {
+            if(token=="+"|| token=="-" || token=="*" || token=="/")
+            {
+                int a=st.top(); //second
+                st.pop();
+                int b=st.top(); //first
+                st.pop();
+
+                if(token=="+")
+                {
+                    ans=b+a;
+                    st.push(ans);
+                }
+                else if(token=="-")
+                {
+                    ans=b-a;
+                    st.push(ans);
+                }
+                else if(token=="*")
+                {
+                    ans=b*a;
+                    st.push(ans);
+                }
+                else{
+                    ans=b/a;
+                    st.push(ans);
+                }
+
+                
+            }
+            else{
+                st.push(stoi(token));
+            }
+
+        }
+        return st.top();
+        
+    }
+
+};
+
+//In Reverse Polish Notation (RPN), you should always use the first operand (b) as the left operand and 
+//the second operand (a) as the right operand when performing arithmetic operations like subtraction and division.

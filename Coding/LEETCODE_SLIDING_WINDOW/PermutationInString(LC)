@@ -1,0 +1,35 @@
+LEETCODE: 567. Permutation in String (SLIDING WINDOW and HASHMAP)
+
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        int n,m;
+        n=s1.size();
+        m=s2.size();
+        if(m<n) return false;
+        unordered_map<char,int>mpp1,mpp2;
+
+        for(char ch:s1) mpp1[ch]++;
+        for(int i=0;i<n;i++) mpp2[s2[i]]++;
+         
+          if(mpp1==mpp2) return true;
+
+        for(int i=n;i<m;i++)
+        {
+            mpp2[s2[i]]++;
+            mpp2[s2[i-n]]--;
+
+            if(mpp2[s2[i-n]]==0) mpp2.erase(s2[i-n]);
+
+            if(mpp1==mpp2) return true;
+
+        }
+        return false;
+    }
+};
+
+// How to Compare s1Freq and s2Freq?
+
+//Both s1Freq and s2Freq are unordered maps (unordered_map<char, int>).
+//We compare them directly using == in C++ because unordered_map supports this operation.
+//If both maps contain the exact same character counts, they are considered equal.

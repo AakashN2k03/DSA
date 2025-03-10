@@ -1,0 +1,11 @@
+GFG: Factorial (RECURSION)
+
+class Solution {
+    int fact=1;
+  public:
+    int factorial(int n) {
+        if(n==0) return fact;
+      fact*=n;
+      factorial(n-1);
+    }
+};

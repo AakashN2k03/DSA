@@ -1,0 +1,11 @@
+GFG: Sum of Natural Numbers (RECURSION)
+
+class Solution {
+    int sum=0;
+  public:
+    int seriesSum(int n) {
+        if(n==0) return sum;
+        sum+=n;
+        seriesSum(n-1);
+    }
+};

@@ -1,0 +1,53 @@
+LEETCODE: 725. Split Linked List in Parts (SLL)
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    vector<ListNode*> splitListToParts(ListNode* head, int k) {
+        vector<ListNode*> res(k,nullptr);
+        ListNode* temp=head;
+
+        // length of entire list
+        int length=0;
+        while(temp)
+        {
+            length++;
+            temp=temp->next;
+        }
+
+        int base_size=length/k; // actual no of elements
+        int extra=length%k ;   // if any extra elements present
+
+        ListNode* current;
+        current=head;
+        ListNode* prev=nullptr;
+
+        // split the list
+
+        for(int i=0;i<k;i++)
+        {
+            res[i]=current;
+           int  no_of_moves=base_size+(extra>0?1:0);
+           extra--; // reduce extra nodes after it
+
+            for(int j=0;j<no_of_moves;j++)
+            {
+                prev=current;
+                current=current? current->next : nullptr;
+            }
+            // terminate the list for each set of vector nodes
+            if(prev) prev->next=nullptr;
+            
+        }
+        return res;
+    }
+};

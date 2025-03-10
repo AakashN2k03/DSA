@@ -1,0 +1,10 @@
+GFG: Print N to 1 without loop (RECURSION)
+
+class Solution {
+  public:
+    void printNos(int N) {
+       if(N==0) return;
+       cout<<n<<" ";
+       printNos(N-1);
+    }
+};

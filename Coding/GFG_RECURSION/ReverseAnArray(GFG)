@@ -1,0 +1,17 @@
+GFG: Reverse an Array (RECURSION + TWO POINTER)
+
+class Solution {
+  public:
+  void reverse_helper(vector<int>&arr,int left,int right)
+  {
+      if(left>=right) return;    // can use  if (left >right) return; still works
+      
+      swap(arr[left],arr[right]);
+      
+      reverse_helper(arr,left+1,right-1);
+  }
+    void reverseArray(vector<int> &arr) {
+        int size=arr.size()-1;
+     reverse_helper(arr,0,size);
+    }
+};

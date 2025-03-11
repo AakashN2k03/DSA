@@ -1,0 +1,17 @@
+GFG:  Palindrome String (RECURSION + TWO POINTER)
+
+ class Solution {
+  public:
+    bool palindrome_checker(string& s, int left,int right)
+    {     
+          if(left>=right) return true;   // still can use  if (left right) return true;
+          if(s[left]!=s[right]) return false; 
+       
+             return palindrome_checker(s,left+1,right-1);
+        
+    }
+    bool isPalindrome(string& s) {
+        int size=s.length()-1;
+        return palindrome_checker(s,0,size);
+    }
+};

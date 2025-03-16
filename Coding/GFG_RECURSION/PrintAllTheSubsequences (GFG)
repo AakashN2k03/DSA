@@ -1,0 +1,25 @@
+GFG:  PRINT ALL THE SUBSEQUENCES (RECURSION)
+
+#include <iostream>
+using namespace std;
+
+void printSubsequences(string input, string output, int index) {
+    // Base case: when we reach the end of the string
+    if (index == input.size()) {
+        cout << output << endl;
+        return;
+    }
+
+    // Exclude the current character
+    printSubsequences(input, output, index + 1);
+
+    // Include the current character
+    printSubsequences(input, output + input[index], index + 1);
+}
+
+int main() {
+    string str = "abc";
+    cout << "Subsequences of \"" << str << "\":" << endl;
+    printSubsequences(str, "", 0);
+    return 0;
+}

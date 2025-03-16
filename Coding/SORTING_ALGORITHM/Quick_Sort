@@ -1,0 +1,48 @@
+#include <bits/stdc++.h> 
+using namespace std;
+
+int partition(vector<int>& arr, int low, int high)
+{
+    int i = low, j = high;
+    int pivot = arr[low];
+
+    while (i < j) // Ensure i and j do not cross each other
+    {
+        // Find an element greater than pivot on the left side
+        while (arr[i] <= pivot && i <= high - 1) // Ensures i stays within bounds
+        {
+            i++;
+        }
+
+        // Find an element smaller than pivot on the right side
+        while (arr[j] > pivot && j >= low + 1) // Ensures j stays within bounds
+        {
+            j--;
+        }
+
+        // Swap only if i and j haven't crossed
+        if (i < j) 
+            swap(arr[i], arr[j]);
+    }
+
+    // Swap pivot into its correct position (j is the correct position for pivot)
+    swap(arr[low], arr[j]); 
+    return j;
+}
+
+void qs(vector<int>& arr, int low, int high)
+{
+    if (low < high)
+    {
+        int partition_index = partition(arr, low, high);
+        qs(arr, low, partition_index - 1);
+        qs(arr, partition_index + 1, high);
+    }
+}
+
+vector<int> quickSort(vector<int> arr)
+{
+    int n = arr.size() - 1;
+    qs(arr, 0, n);
+    return arr;
+}

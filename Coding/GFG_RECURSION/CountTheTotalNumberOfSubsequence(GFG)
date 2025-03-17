@@ -1,0 +1,22 @@
+GFG: count the total number of subsequence
+
+
+#include <iostream>
+using namespace std;
+int count_sub(string input,string output,int index)
+{
+    if(input.size()==index)
+    {
+        return 1;
+    }
+    int exclude=count_sub(input,output,index+1);
+    int include=count_sub(input,output+input[index],index+1);
+    return exclude+include;
+}
+
+int main() {
+    string s="abc";
+    cout<<count_sub(s,"",0);
+
+    return 0;
+}

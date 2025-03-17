@@ -1,0 +1,37 @@
+GFG: Print any subsequence
+
+#include <iostream>
+using namespace std;
+
+bool printanysub(string input, string output, int index) {
+    if (index == input.size()) {
+        if (!output.empty()) {  // Avoid printing empty subsequence
+            cout << output << endl;
+            return true;
+        }
+        return false;
+    }
+
+    // Include current character
+    if (printanysub(input, output + input[index], index + 1)) {
+        return true;
+    }
+    
+    // Exclude current character
+    if (printanysub(input, output, index + 1)) {
+        return true;
+    }
+    
+    return false;
+}
+
+int main() {
+    string s = "abc";
+    printanysub(s, "", 0);
+    return 0;
+}
+
+
+// What I Meant by "Issue: Prints an Empty Line"
+// Your function prints any one subsequence of a given string. However, since you don't check if output is empty before printing,
+// it may print an empty string ("") as a valid subsequence, which results in an extra blank line in the output.

@@ -1,0 +1,22 @@
+GFG: Subset Sum Problem (RECURSION)
+
+class Solution {
+  public:
+  void recursive_subset_sum(int index,int sum,vector<int>& arr,vector<int>& ans)
+  {
+      if(index==arr.size())
+      {
+          ans.push_back(sum);
+          return;
+      }
+   //pick       recursive_subset_sum(index+1,sum+arr[index],arr,ans);
+   //Not pick    recursive_subset_sum(index+1,sum,arr,ans);
+  
+  }
+    vector<int> subsetSums(vector<int>& arr) {
+        vector<int>ans;
+       recursive_subset_sum(0,0,arr,ans);
+       sort(ans.begin(),ans.end());
+       return ans;
+    }
+};

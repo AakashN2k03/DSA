@@ -1,0 +1,29 @@
+LEETCODE: 90. Subsets II (RECURSION)
+
+// same as combination sum II
+class Solution {
+public:
+void generate_all_subsets(int index,vector<int>& nums,vector<int>& ds,vector<vector<int>>& ans)
+{
+    ans.push_back(ds);
+    for(int i=index;i<nums.size();i++)
+    {
+        if(i>index && nums[i]==nums[i-1]) continue;
+        ds.push_back(nums[i]);
+        generate_all_subsets(i+1,nums,ds,ans);
+        ds.pop_back();
+            }
+}
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+
+        vector<vector<int>> ans;
+        vector<int>ds;
+        sort(nums.begin(),nums.end());
+        generate_all_subsets(0,nums,ds,ans);
+        return ans;
+    }
+};
+
+// Why is There No Explicit Base Case in findSubsets?
+// Unlike Combination Sum II, where we stop when target == 0, in Subsets II, there is no fixed condition to stop recursion.
+// Instead, the function naturally terminates when index reaches nums.size(), because the loop will automatically end.

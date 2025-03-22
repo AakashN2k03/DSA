@@ -1,0 +1,40 @@
+LEETCODE: 131. Palindrome Partitioning (RECURSION)
+
+// While working with recursion,firstly draw a recursion tree and proceed to backend execution steps
+// See Strivers's dry run for recursion tree 
+
+class Solution {
+public:
+void palindrome_partioning(string s,int index,vector<string>& ds, vector<vector<string>>& ans)
+{
+    if(index==s.length())
+    {
+        ans.push_back(ds);
+        return;
+    }
+
+    for(int i=index;i<s.length();i++)
+    {
+       if(palindrome_check(s,index,i))
+       {
+        ds.push_back(s.substr(index,i-index+1));
+        palindrome_partioning(s,i+1,ds,ans);
+        ds.pop_back();
+    }
+    }
+}
+bool palindrome_check(string s,int start,int end)
+{
+    while(start<=end)
+    {
+        if(s[start++]!=s[end--])return false;
+    }
+    return true;
+}
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+        vector<string>ds;
+        palindrome_partioning(s,0,ds,ans);
+        return ans;
+    }
+};

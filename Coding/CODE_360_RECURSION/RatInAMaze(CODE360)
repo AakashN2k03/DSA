@@ -1,0 +1,53 @@
+CODE360:  Rat In A Maze (RECURSION)
+
+// see striver for conceptual understanding and why to use di,dj arrays
+// Do this problem using DP
+#include <bits/stdc++.h>
+using namespace std;
+
+// Recursive function to find all paths in the maze
+void rate_in_a_maze(int i, int j, int n, string move, vector<string> &ans, vector<vector<int>> &visited_arr, vector<vector<int>> &arr, int di[], int dj[]) {
+    // If we reach the destination (bottom-right corner)
+    if (i == n - 1 && j == n - 1) {
+        ans.push_back(move); // Store the path
+        return;
+    }
+
+    string direction = "DLRU";
+
+    for (int index = 0; index < 4; index++) {
+        int nexti = i + di[index];
+        int nextj = j + dj[index];
+
+        // Check if the next cell is valid and open to move
+        if (nexti >= 0 && nextj >= 0 && nexti < n && nextj < n &&
+            !visited_arr[nexti][nextj] && arr[nexti][nextj] == 1) {
+
+            // Mark the cell as visited
+            visited_arr[i][j] = 1;
+
+            // Recursive call with updated position and path
+            rate_in_a_maze(nexti, nextj, n, move + direction[index], ans, visited_arr, arr, di, dj);
+
+            // Backtrack: Unmark the cell to explore other paths
+            visited_arr[i][j] = 0;
+        }
+    }
+}
+
+vector<string> searchMaze(vector<vector<int>> &arr, int n) {
+    vector<string> ans;
+    vector<vector<int>> visited_arr(n, vector<int>(n, 0));
+
+    // Direction vectors (D, L, R, U)
+    int di[] = {1, 0, 0, -1};
+    int dj[] = {0, -1, 1, 0};
+
+    // Start from the top-left corner if the starting cell is open
+    if (arr[0][0] == 1) {
+        rate_in_a_maze(0, 0, n, "", ans, visited_arr, arr, di, dj);
+    }
+
+    // Return all valid paths
+    return ans;
+}

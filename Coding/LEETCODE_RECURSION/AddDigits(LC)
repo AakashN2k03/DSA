@@ -14,4 +14,7 @@ public:
     }
 };
 
-// NOTE: 1234 = 1+2+3+4= 10=> 1+0 = 1
+// NOTE: Add digits is different from sum of digits
+
+// ADD DIGITS-> 1234 = 1+2+3+4= 10=> 1+0 = 1
+// SUM OF DIGITS-> 1234 = 1+2+3+4 = 10

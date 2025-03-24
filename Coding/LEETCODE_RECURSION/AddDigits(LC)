@@ -1,0 +1,17 @@
+LEETCODE: 258. Add Digits (MATHS)
+
+// DIGITAL ROOT FORMULA
+
+// The digital root of a number is the value obtained by recursively summing its digits until a single digit is obtained. 
+// It can be calculated using the modulus operation due to the properties of numbers in base 10 and modulo 9.
+
+class Solution {
+public:
+    int addDigits(int num) {
+        if (num == 0) return 0;
+        if (num % 9 == 0) return 9;
+        return num % 9;
+    }
+};
+
+// NOTE: 1234 = 1+2+3+4= 10=> 1+0 = 1

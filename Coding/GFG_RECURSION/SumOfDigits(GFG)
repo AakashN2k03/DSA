@@ -1,0 +1,14 @@
+GFG: Sum Of Digits(RECURSION)
+
+class Solution {
+  public:
+  int sumofdigits(int n,int sum)
+  {
+      if(n==0) return sum;
+      sum+=n%10;
+      return sumofdigits(n/10,sum);
+  }
+    int sumOfDigits(int n) {
+       return sumofdigits(n,0);
+    }
+};

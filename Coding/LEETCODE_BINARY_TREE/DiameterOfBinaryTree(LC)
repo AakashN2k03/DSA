@@ -1,0 +1,36 @@
+LEETCODE: 543. Diameter of Binary Tree (RECURSION)
+
+// DIAMETER -> THE LONGEST PATH BETWEEN ANY TWO NODES,IT MAY OR MAY NOT VIA THROUGH ROOT NODE
+// USE HEIGHT OF THE TREE PROBLEM TO SOLVE THIS PROBLEM
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+  int longest_between_two_nodes(TreeNode* node,int& diameter) // Pass diameter by reference
+  {
+    if(!node) return 0;
+
+    int left_subtree=longest_between_two_nodes(node->left,diameter);
+    int right_subtree=longest_between_two_nodes(node->right,diameter);
+    diameter=max(diameter,left_subtree+right_subtree);
+
+    return 1+max(left_subtree ,right_subtree);
+  }
+    int diameterOfBinaryTree(TreeNode* root) {
+        int diameter=0;
+        longest_between_two_nodes(root,diameter);
+        return diameter;
+
+        
+    }
+};

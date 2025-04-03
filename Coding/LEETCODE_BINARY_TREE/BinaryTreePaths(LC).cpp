@@ -1,4 +1,4 @@
-// LEETCODE: 257. Binary Tree Paths (RECURSION , INORDER )
+// LEETCODE: 257. Binary Tree Paths (RECURSION)
 
 /**
  * Definition for a binary tree node.

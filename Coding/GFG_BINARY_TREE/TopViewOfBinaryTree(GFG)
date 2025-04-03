@@ -9,8 +9,8 @@ struct Node
 class Solution {
   public:
     vector<int> topView(Node *root) {
-      map<int,int> mpp;
-      queue<pair<Node*,int>>qu;
+      map<int,int> mpp;          // LINE , NODE->VALUE
+      queue<pair<Node*,int>>qu;  // NODE , LINE
       qu.push({root,0});
       
       while(!qu.empty())

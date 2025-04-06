@@ -1,4 +1,4 @@
-GFG: Ceil in BST 
+// GFG: Ceil in BST 
 
 int findCeil(Node* root, int input) {
     if (root == NULL) return -1;

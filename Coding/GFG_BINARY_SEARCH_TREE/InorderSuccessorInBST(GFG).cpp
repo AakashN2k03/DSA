@@ -1,5 +1,5 @@
 // GFG: Inorder Successor in BST 
-
+ 
 class Solution {
   public:
     // returns the inorder successor of the Node x in BST (rooted at 'root')

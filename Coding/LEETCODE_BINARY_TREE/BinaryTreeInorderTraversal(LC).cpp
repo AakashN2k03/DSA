@@ -12,6 +12,8 @@ LEETCODE: 94. Binary Tree Inorder Traversal (RECURSION)
  * };
  */
 
+//Most systems allow ~10,000 to 20,000 recursive calls (stack frames).->(10^5),suitable for less stack call problems
+//So, if your tree has depth > 10,000, you're likely to hit a stack overflow.
 
 class Solution {
 public:
@@ -29,3 +31,11 @@ void inorder(TreeNode* node,vector<int>& result)
         return result;
     }
 };
+// Time Complexity: O(N)
+// space complexity
+
+// Auxiliary Space (Call Stack):
+
+// Best Case (Balanced Tree): O(log N)
+
+// Worst Case (Skewed Tree): O(N)

@@ -12,6 +12,7 @@ LEETCODE: 94. Binary Tree Inorder Traversal (STACK)  // WITHOUT RECURSION
  * };
  */
 
+// Iterative method is preferref for large input as stack used heap memory
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
@@ -36,3 +37,12 @@ public:
         return ans;
     }
 };
+
+//Time Complexity: O(N)
+// Space complexity
+
+// Auxiliary Space (Explicit Stack):
+
+// Best Case (Balanced Tree): O(log N)
+
+// Worst Case (Skewed Tree): O(N)

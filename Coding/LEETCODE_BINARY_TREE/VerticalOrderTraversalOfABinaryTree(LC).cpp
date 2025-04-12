@@ -1,4 +1,4 @@
-LEETCODE: 987. Vertical Order Traversal of a Binary Tree (QUEUE, MAP, MULTISET, BFS )
+// LEETCODE: 987. Vertical Order Traversal of a Binary Tree (QUEUE, MAP, MULTISET, BFS )
 
 // SEE CONCEPT MULTIPLE TIMES TO UNDERSTAND THIS PROBLEM
 
@@ -24,7 +24,7 @@ public:
 
         while(!qu.empty())
         {
-            auto p = qu.front();
+            auto p = qu.front();    // can use pair<TreeNode*, pair<int, int>> p = qu.front();  (STRAIGHT FORWARD APPROACH)
             qu.pop();
             TreeNode* temp=p.first;
             int x=p.second.first;

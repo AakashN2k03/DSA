@@ -4,7 +4,7 @@ class Solution{
     public:
     //Function to check whether all nodes of a tree have the value 
     //equal to the sum of their child nodes.
-    int isSumProperty(Node *root)
+    int isSumProperty(Node *root) 
     {
         if(!root) return true;
         if(!root->left && !root->right) return true;

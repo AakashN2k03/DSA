@@ -25,3 +25,5 @@ public:
         return checkisValidBST(root,LONG_MIN,LONG_MAX);
     }
 };
+//  Time Complexity: O(n)
+// Space Complexity: O(n)

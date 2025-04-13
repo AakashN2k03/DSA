@@ -1,16 +1,6 @@
 //LEETCODE: 700. Search in a Binary Search Tree 
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+
 
 class Solution {
 public:
@@ -23,3 +13,6 @@ public:
         return root;
     }
 };
+// time complexity: O(h) where h is height of BST
+// space complexity: O(1)
+

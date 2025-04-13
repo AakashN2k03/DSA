@@ -35,7 +35,7 @@ public:
                 if(i==size-1) last=current_id;
 
                 if(node->left) qu.push({node->left,2*current_id+1}); // 2*i+1
-                if(node->right) qu.push({node->right,2*current_id+2});// 2*i+1
+                if(node->right) qu.push({node->right,2*current_id+2});// 2*i+2
             }
             ans=max(ans,(last-first+1));
         }

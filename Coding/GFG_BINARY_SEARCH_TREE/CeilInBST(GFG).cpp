@@ -28,3 +28,6 @@ int findCeil(Node* root, int input) {
     }
     return ceil;
 }
+
+// Time Complexity: O(h)
+//  Space Complexity: O(1)

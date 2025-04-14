@@ -28,9 +28,9 @@ class Solution {
 };
 
 // ✅ Time Complexity: O(V + E)
-// ✅ Space Complexity: O(V)
 
-vis array → size V
-dfs_res → stores all V nodes
-Call stack (for recursion): In worst case (linear graph), stack depth = V
-So total space = O(V) + O(V) + O(V) = O(V)
+// ✅ Space Complexity: O(V)
+// vis array → size V
+// dfs_res → stores all V nodes
+// Call stack (for recursion): In worst case (linear graph), stack depth = V
+// So total space = O(V) + O(V) + O(V) = O(V)

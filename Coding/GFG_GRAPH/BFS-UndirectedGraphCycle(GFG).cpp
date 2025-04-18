@@ -1,6 +1,6 @@
 // GFG: Undirected Graph Cycle ( BFS )
 
-class Solution {
+class Solution { 
 public:
     bool bfs(int src, vector<int>& vis, vector<vector<int>>& adj)
     {

@@ -7,7 +7,7 @@ public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         int n=mat.size();
         int m=mat[0].size();
-        vector<vector<int>> distance(n,vector<int>(m,1));
+        vector<vector<int>> distance(n,vector<int>(m,1)); 
         vector<vector<int>> vis(n,vector<int>(m,1));
         queue<pair<pair<int,int>,int>>qu;
 

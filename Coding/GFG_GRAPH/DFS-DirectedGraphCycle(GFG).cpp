@@ -3,6 +3,8 @@
 // DO THIS PROBLEM USING SINGLE VIS ARRAY
 // IF POSSIBLE DO IT ON USING BFS
 
+// CONDITION : ON THE SAME PATH THE NODE HAS TO BE VISITED AGAIN,THEN THERE IS A CYCLE EXISTS IN A DIRECTED GRAPH
+
 class Solution {
   public:
     bool dfs(int node,vector<int>&vis,vector<int>& path_vis,vector<vector<int>>& adjls)

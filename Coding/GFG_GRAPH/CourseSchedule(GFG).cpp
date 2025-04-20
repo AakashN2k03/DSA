@@ -1,5 +1,7 @@
 // GFG: Course Schedule (KANNS'S ALGORITHM / BFS )
 
+// NOTE : SAME PROBLEM AS PREREQUISITE TASK BUT A SLIGHT FLIP IN adjls is  NEEDED (adjls[v].push_back(u))
+
 class Solution {
   public:
     vector<int> findOrder(int N, vector<vector<int>> prerequisites) {

@@ -9,7 +9,7 @@ class Solution {
         vector<vector<int>> adjls(N);
         
         for (auto it : prerequisites) {
-            adjls[it.first].push_back(it.second);
+            adjls[it.first].push_back(it.second); // can use adjls[it.second].push_back(it.first); here cycle exits or not is matter , rather than ordering of nodes like  in course schdule problem
         }
         
         for (int i = 0; i < N; i++) {

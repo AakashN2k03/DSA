@@ -27,7 +27,7 @@ public:
                     st.erase(word);
                     qu.push({word,steps+1});
                  }
-          word[i]=original_char;
+                 word[i]=original_char; // reassign the original character
             }
           }
         }

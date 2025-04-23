@@ -27,7 +27,7 @@ public:
         {
             int adjnode=it.first;
             int edge_weight=it.second;
-            if(cost+edge_weight < distance[adjnode] && stops<=k)
+            if(cost+edge_weight < distance[adjnode])
             {
                 distance[adjnode]=cost+edge_weight;
                 qu.push({stops+1,{adjnode,distance[adjnode]}});

@@ -7,6 +7,7 @@
 // Has no cycles (like a tree).
 // Among all possible spanning trees, the Minimum Spanning Tree (MST) is the one with the smallest total edge weight.
 
+// NOTE:weighted, undirected, and connected graph, ❌ Negative cycles are not a concern (MSTs avoid cycles entirely).
 
 // 🌟 What is Prim's Algorithm?
 // Prim's Algorithm is a famous algorithm to find the MST.

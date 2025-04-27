@@ -4,6 +4,8 @@
 // tin[node] → Time when the node was first visited.
 // low[node] → min lowest time insertion of all adjacent nodes apart from parent node
 
+// DRY RUN THIS CODE 
+
 class Solution {
 public:
 int timer=1;

@@ -4,7 +4,7 @@
 class Solution {
 public:
    int robber_house(int n,vector<int>& nums,vector<int>& dp)
-   {
+   { 
     if(n==0) return nums[0];
     if(n<0) return 0;
     if(dp[n]!=-1) return dp[n];

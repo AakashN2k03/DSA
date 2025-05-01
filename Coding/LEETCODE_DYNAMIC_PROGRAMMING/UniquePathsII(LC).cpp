@@ -22,13 +22,13 @@ public:
         int m = obstacleGrid[0].size();
 
         vector<vector<int>> dp(n, vector<int>(m, -1));
-
         return uniqueII(n - 1, m - 1, obstacleGrid, dp);
     }
 };
 
-TIME COMPLEXITY: O(N*M)
-SPACE COMPLEXITY:O(N*M)+O(N) (STACK SPACE)
+// TIME COMPLEXITY: O(N*M)
+// SPACE Complexity: = O(m * n) (for dp) + O(m + n) (for recursion stack)
+// But we usually consider the dominating term: O(m * n).
 
 //TABULATION
 
@@ -59,6 +59,5 @@ public:
     }
 };
 
-TIME COMPLEXITY: O(N*M)
-SPACE COMPLEXITY:O(N*M)
-
+// TIME COMPLEXITY: O(N*M)
+// SPACE COMPLEXITY:O(N*M)

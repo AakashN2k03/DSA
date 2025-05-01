@@ -34,10 +34,10 @@ public:
         {
             for(int j=0;j<n;j++)
             {
-                if(i==0 || j==0) dp[i][j]=1;
+                if(i==0 && j==0) dp[i][j]=1;
                 else{
-                    int up=dp[i-1][j];
-                    int down=dp[i][j-1];
+                     int up = (i > 0) ? dp[i-1][j] : 0;
+                    int down = (j > 0) ? dp[i][j-1] : 0;
                     dp[i][j]=up+down;
                 }
             }

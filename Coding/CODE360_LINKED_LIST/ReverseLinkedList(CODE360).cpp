@@ -1,4 +1,4 @@
-CODE360:  Reverse Linked List (SLL)
+// CODE360:  Reverse Linked List (SLL)
 
 Node* reverseLinkedList(Node *head)
 {
@@ -15,3 +15,6 @@ Node* reverseLinkedList(Node *head)
 }
 
 // we can perform this code using stack too
+
+//Time Complexity: O(n)
+// Space Complexity: O(1)

@@ -50,3 +50,15 @@ Most online judges can handle about **10^8 operations per second**. Use the foll
 
 By estimating the time complexity correctly, you can avoid TLE (Time Limit Exceeded) errors and write efficient solutions confidently!
 
+### NOTE:
+- 📌 Why 1e9 is safer than INT_MAX in DP:
+Suppose you write:
+int res = grid[i][j] + INT_MAX;
+You risk overflow — because INT_MAX + x exceeds the limit of int, which causes undefined behavior.
+
+- But: int res = grid[i][j] + 1e9;
+is safer because 1e9 is much less than INT_MAX, so addition won’t cause overflow in 99.9% of competitive programming scenarios.
+
+#### 1e9     ->	1,000,000,000 (	A large safe constant)
+#### INT_MAX -> 2,147,483,647  (Maximum value for 32-bit int)
+

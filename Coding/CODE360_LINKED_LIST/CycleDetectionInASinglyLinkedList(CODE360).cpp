@@ -1,4 +1,4 @@
-CODE360:  Cycle Detection in a Singly Linked List (SLL)
+// CODE360:  Cycle Detection in a Singly Linked List (SLL)
 
            //     TORTOISE AND HARE  //
 
@@ -15,8 +15,13 @@ bool detectCycle(Node *head)
     } 
     return false;
 }
+
+// Time Complexity:O(n)
+// Space Complexity:O(1)
+
 // EASY WAY USING SET or HASHMAP
- (LEETCODE)
+ // (LEETCODE)
+
 class Solution {
 public:
     bool hasCycle(ListNode *head) {

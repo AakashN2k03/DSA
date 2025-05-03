@@ -1,4 +1,4 @@
-CODE 360: Find Minimum in Rotated Sorted Array
+// CODE 360: Find Minimum in Rotated Sorted Array
 
 // METHOD 1
 
@@ -34,3 +34,7 @@ int findMin(vector<int>& arr)
 	 }
 	 return ans;
 }
+// Time Complexity
+// Best case: O(log n) — when no duplicates  
+// Worst case: O(n) — when all elements are duplicates and you only shrink by 1 each time
+// SPACE COMPLEXITY: O(1)

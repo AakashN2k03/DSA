@@ -1,4 +1,4 @@
-CODE 360:  Search In A Rotated Sorted Array II (BS)
+// CODE 360:  Search In A Rotated Sorted Array II (BS)
 
 bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
     // Write your code here
@@ -44,4 +44,10 @@ bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
     }
     return false;
 }
+// TIME COMPLEXITY:
+// Best case (with no duplicates): O(log n)
+// Worst case (with duplicates): O(n)
+
+// SPACE COMPLEXITY: O(1)
+
 // it can also performed by linear search but it is not an optimized one according to constraints provided by th code 360.

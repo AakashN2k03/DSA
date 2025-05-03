@@ -1,4 +1,4 @@
-CODE 360:  Search In Rotated Sorted Array (BS)
+// CODE 360:  Search In Rotated Sorted Array (BS)
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -35,6 +35,9 @@ int search(vector<int>& arr, int n, int k) {
     }
     return -1;
 }
+// TIME COMPLEXITY:O(LOGN)
+// SPACE COMPLEXITY:O(1)
+
 
 // can do this problem using linear serach too,but it is not optimized in code 360 39/40 cases alone passes using linear search
 // whereas using bs all testcases have been passed.

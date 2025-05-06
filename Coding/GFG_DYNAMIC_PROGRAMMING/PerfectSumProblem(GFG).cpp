@@ -1,6 +1,7 @@
 GFG:Perfect Sum Problem (COUNT SUBSET WITH SUM K) (DP,MEMOIZATION)
 
 //NOTE: DO THIS USING TABULATION AND SPACE OPTIMIZATION
+// see SubsetSumProblem before solving this problem
 
 class Solution {
 public:

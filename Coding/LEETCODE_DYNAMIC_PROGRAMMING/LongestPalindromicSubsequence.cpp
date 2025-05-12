@@ -24,5 +24,5 @@ public:
     }
 };
 
-//  Time Complexity: O(n × m)
-// Space Complexity: O(n × m) + O(n + m)
+//  Time Complexity: O(n^2)
+// Space Complexity: O(n^2)+O(n)=O(n^2)

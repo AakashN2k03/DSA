@@ -1,7 +1,19 @@
 #include <iostream>
 using namespace std;
-int main() {
-    
+
+// EG: enter the number 5
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+
+int main() {   
     int n;
     cout<<"enter the number"<<endl;
     cin>>n;

@@ -13,7 +13,7 @@ public:
 
     void addEdge(int u, int v) {
         adjList[u].push_back(v);
-        adjList[v].push_back(u); // For undirected graph
+        adjList[v].push_back(u); // For undirected graph ,for directed graph remove this line alone
     }
 
     void printGraph() {
